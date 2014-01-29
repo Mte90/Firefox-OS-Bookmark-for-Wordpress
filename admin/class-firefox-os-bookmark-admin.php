@@ -137,9 +137,6 @@ class Firefox_OS_Bookmark_Admin {
 				$this->plugin_slug . '_developer_url', 'Site', array( $this, 'field_developer_url' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_launch_path', 'Launch Path', array( $this, 'field_launch_path' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
-		);
-		add_settings_field(
 				$this->plugin_slug . '_default_locale', 'Default Locale', array( $this, 'field_default_locale' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
@@ -191,16 +188,6 @@ class Firefox_OS_Bookmark_Admin {
 		}
 
 		echo '<input type="text" size="60" name="' . $this->plugin_slug . '[developer_url]" value="' . esc_attr( $setting[ 'developer_url' ] ) . '" />';
-	}
-
-	function field_launch_path() {
-		$setting = ( array ) get_option( $this->plugin_slug );
-
-		if ( !isset( $setting[ 'launch_path' ] ) ) {
-			$setting[ 'launch_path' ] = get_bloginfo( 'url' );
-		}
-
-		echo '<input type="text" size="60" name="' . $this->plugin_slug . '[launch_path]" value="' . esc_attr( $setting[ 'launch_path' ] ) . '" />';
 	}
 
 	function field_default_locale() {
