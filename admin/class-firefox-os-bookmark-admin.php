@@ -120,9 +120,11 @@ class Firefox_OS_Bookmark_Admin {
 	}
 
 	function ffos_bookmark_settings() {
-		
+
 		add_settings_section(
-				'ffos_bookmark_settings_manifest_section', 'Manifest Settings', function () {}, $this->plugin_slug
+				'ffos_bookmark_settings_manifest_section', 'Manifest Settings', function () {
+			
+		}, $this->plugin_slug
 		);
 		add_settings_field(
 				$this->plugin_slug . '_name', 'Name', array( $this, 'field_name' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
@@ -144,7 +146,9 @@ class Firefox_OS_Bookmark_Admin {
 		);
 
 		add_settings_section(
-				'ffos_bookmark_settings_icons_section', 'Icons Settings', function () {}, $this->plugin_slug
+				'ffos_bookmark_settings_icons_section', 'Icons Settings', function () {
+			
+		}, $this->plugin_slug
 		);
 
 		register_setting( $this->plugin_slug, $this->plugin_slug );
@@ -173,21 +177,21 @@ class Firefox_OS_Bookmark_Admin {
 	function field_developer_name() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
-		if ( !isset( $setting[ 'developer_name' ] ) ) {
-			$setting[ 'developer_name' ] = '';
+		if ( !isset( $setting[ 'developer' ][ 'name' ] ) ) {
+			$setting[ 'developer' ][ 'name' ] = '';
 		}
 
-		echo '<input type="text" size="60" name="' . $this->plugin_slug . '[developer_name]" value="' . esc_attr( $setting[ 'developer_name' ] ) . '" />';
+		echo '<input type="text" size="60" name="' . $this->plugin_slug . '[developer][name]" value="' . esc_attr( $setting[ 'developer' ][ 'name' ] ) . '" />';
 	}
 
 	function field_developer_url() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
-		if ( !isset( $setting[ 'developer_url' ] ) ) {
-			$setting[ 'developer_url' ] = get_bloginfo( 'url' );
+		if ( !isset( $setting[ 'developer' ][ '_url' ] ) ) {
+			$setting[ 'developer' ][ 'url' ] = get_bloginfo( 'url' );
 		}
 
-		echo '<input type="text" size="60" name="' . $this->plugin_slug . '[developer_url]" value="' . esc_attr( $setting[ 'developer_url' ] ) . '" />';
+		echo '<input type="text" size="60" name="' . $this->plugin_slug . '[developer][url]" value="' . esc_attr( $setting[ 'developer' ][ 'url' ] ) . '" />';
 	}
 
 	function field_default_locale() {
