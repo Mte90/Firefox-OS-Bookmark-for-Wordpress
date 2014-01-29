@@ -71,13 +71,6 @@ class Firefox_OS_Bookmark {
 		// Load public-facing style sheet and JavaScript.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
-		function manifest_rewrite() {
-			$url = str_replace( trailingslashit( site_url() ), '', plugins_url( '/manifest.php', __FILE__ ) );
-			add_rewrite_rule( 'manifest\\.webapp$', $url, 'top' );
-		}
-
-		add_action( 'wp_loaded', 'manifest_rewrite' );
 	}
 
 	/**
@@ -222,7 +215,12 @@ class Firefox_OS_Bookmark {
 	 * @since    1.0.0
 	 */
 	private static function single_activate() {
-		// @TODO: Define activation functionality here
+		global $wp_rewrite;
+		$plugin_url = plugins_url().'/'.$this->plugin_slug.'/manifest.php';
+		
+		add_rewrite_rule( 'manifest.webapp$', $plugin_url, 'top' );
+		
+		$wp_rewrite->flush_rules(); 
 	}
 
 	/**
@@ -231,7 +229,8 @@ class Firefox_OS_Bookmark {
 	 * @since    1.0.0
 	 */
 	private static function single_deactivate() {
-		// @TODO: Define deactivation functionality here
+		global $wp_rewrite;
+		$wp_rewrite->flush_rules(); 
 	}
 
 	/**
