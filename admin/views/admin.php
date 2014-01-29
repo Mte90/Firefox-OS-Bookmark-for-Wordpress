@@ -20,9 +20,7 @@
 
 	<form action="options.php" method="post">
 		<?php
-		settings_errors();
-		settings_fields( 'ffos_bookmark_settings_manifest_section' );
-		settings_fields( 'ffos_bookmark_settings_icons_section' );
+		settings_fields($this->plugin_slug );
 		do_settings_sections( $this->plugin_slug );
 		
 		submit_button(); 
