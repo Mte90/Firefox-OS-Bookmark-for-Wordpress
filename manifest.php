@@ -15,6 +15,7 @@ require('../../../wp-blog-header.php');
 
 $manifest = ( array ) get_option( 'firefox-os-bookmark' );
 
+
 $manifest_ready = str_replace('\\','',json_encode($manifest));
 
 header('Content-type: application/x-web-app-manifest+json');

@@ -60,6 +60,8 @@ class Firefox_OS_Bookmark_Admin {
 		// Add the options page and menu item.
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+
 		// Add an action link pointing to the options page.
 		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_slug . '.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
@@ -80,6 +82,30 @@ class Firefox_OS_Bookmark_Admin {
 		}
 
 		return self::$instance;
+	}
+
+	/**
+	 * Register and enqueue admin-specific JavaScript.
+	 *
+	 * @TODO:
+	 *
+	 * - Rename "Plugin_Name" to the name your plugin
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return null Return early if no settings page is registered.
+	 */
+	public function enqueue_admin_scripts() {
+
+		if ( !isset( $this->plugin_screen_hook_suffix ) ) {
+			return;
+		}
+
+		$screen = get_current_screen();
+		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
+			//wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), Plugin_Name::VERSION );
+			wp_enqueue_media();
+		}
 	}
 
 	/**
@@ -150,6 +176,9 @@ class Firefox_OS_Bookmark_Admin {
 			
 		}, $this->plugin_slug
 		);
+		add_settings_field(
+				$this->plugin_slug . '_icon', 'Icon', array( $this, 'field_icon' ), $this->plugin_slug, 'ffos_bookmark_settings_icons_section'
+		);
 
 		register_setting( $this->plugin_slug, $this->plugin_slug );
 	}
@@ -212,6 +241,20 @@ class Firefox_OS_Bookmark_Admin {
 		}
 
 		echo '<input type="text" name="' . $this->plugin_slug . '[version]" value="' . esc_attr( $setting[ 'version' ] ) . '" /> Change if you update this page';
+	}
+
+	function field_icon() {
+		$setting = ( array ) get_option( $this->plugin_slug );
+
+		if ( !isset( $setting[ 'icon' ] ) ) {
+			$setting[ 'icon' ] = '';
+		}
+
+		echo '<div class="uploader">
+				<input type="text" name="' . $this->plugin_slug . '[icon]" id="' . $this->plugin_slug . '[icon]" />
+				<input type="button" class="button" name="_unique_name_button" id="_unique_name_button" value="Upload" />
+			  </div>
+			  ';
 	}
 
 }
