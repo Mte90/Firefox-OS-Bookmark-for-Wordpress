@@ -246,13 +246,13 @@ class Firefox_OS_Bookmark_Admin {
 
 	function field_icon() {
 		$setting = ( array ) get_option( $this->plugin_slug );
-
+		
 		if ( !isset( $setting[ 'icon' ] ) ) {
 			$setting[ 'icon' ] = '';
 		}
 
 		echo '<div class="uploader">
-				<input type="text" name="' . $this->plugin_slug . '[icon]" id="ffos-icon" />
+				<input type="text" name="' . $this->plugin_slug . '[icon]" value="' . esc_attr( $setting[ 'icon' ] ) . '" id="ffos-icon" />
 				<input type="button" class="button" name="_unique_name_button" id="_unique_name_button" value="Upload" />
 			  </div>
 			  ';
