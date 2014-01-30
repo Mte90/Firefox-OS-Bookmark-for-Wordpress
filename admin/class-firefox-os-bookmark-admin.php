@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -103,7 +104,7 @@ class Firefox_OS_Bookmark_Admin {
 
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			//wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), Plugin_Name::VERSION );
+			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), Firefox_OS_Bookmark::VERSION );
 			wp_enqueue_media();
 		}
 	}
@@ -251,7 +252,7 @@ class Firefox_OS_Bookmark_Admin {
 		}
 
 		echo '<div class="uploader">
-				<input type="text" name="' . $this->plugin_slug . '[icon]" id="' . $this->plugin_slug . '[icon]" />
+				<input type="text" name="' . $this->plugin_slug . '[icon]" id="ffos-icon" />
 				<input type="button" class="button" name="_unique_name_button" id="_unique_name_button" value="Upload" />
 			  </div>
 			  ';
