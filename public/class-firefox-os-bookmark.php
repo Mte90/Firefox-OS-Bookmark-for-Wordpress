@@ -216,7 +216,7 @@ class Firefox_OS_Bookmark {
 	 */
 	private static function single_activate() {
 		global $wp_rewrite;
-		$plugin_url = plugins_url().'/'.$this->plugin_slug.'/manifest.php';
+		$plugin_url = plugins_url().'/firefox-os-bookmark/manifest.php';
 		
 		add_rewrite_rule( 'manifest.webapp$', $plugin_url, 'top' );
 		
