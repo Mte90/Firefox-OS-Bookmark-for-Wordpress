@@ -12,11 +12,11 @@ Plugin for create the manifest.webapp file for install your site as an hosted ap
 
 == Features ==
 
-*   Basic manifest.webapp (domain.tld/manifest.webapp) file
+* Basic manifest.webapp (domain.tld/manifest.webapp) file
+* Icons support
 
 == Roadmap ==
 
-* Icons support
 * MultiSite support
 * Multilanguage support
 * Comment all the code :-D
