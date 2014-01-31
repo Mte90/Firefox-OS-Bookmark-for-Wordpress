@@ -40,7 +40,7 @@ if ( ! is_wp_error( $img ) ) {
     $resize = $img->multi_resize( $sizes_array );
  
     foreach ($resize as $row) {
-		$manifest['icons'][$row['width']] = $url['path'].$row['file'];
+		$manifest['icons'][$row['width']] = $url['path'].'/'.$row['file'];
     }
 }
 $manifest['installs_allowed_from'] = ["*"];
