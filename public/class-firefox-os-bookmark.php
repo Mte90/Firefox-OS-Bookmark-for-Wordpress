@@ -215,12 +215,11 @@ class Firefox_OS_Bookmark {
 	 * @since    1.0.0
 	 */
 	private static function single_activate() {
-		global $wp_rewrite;
-		$plugin_url = plugins_url().'/firefox-os-bookmark/manifest.php';
+		$plugin_url = plugins_url().'/firefox-os-bookmark/manifest.php?id='.get_current_blog_id();
 		
-		add_rewrite_rule( 'manifest.webapp$', $plugin_url, 'top' );
+		add_rewrite_rule( 'manifest\.webapp$', $plugin_url, 'top' );
 		
-		$wp_rewrite->flush_rules(); 
+		flush_rewrite_rules(); 
 	}
 
 	/**
@@ -229,8 +228,7 @@ class Firefox_OS_Bookmark {
 	 * @since    1.0.0
 	 */
 	private static function single_deactivate() {
-		global $wp_rewrite;
-		$wp_rewrite->flush_rules(); 
+		flush_rewrite_rules();  
 	}
 
 	/**

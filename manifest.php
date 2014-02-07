@@ -12,7 +12,10 @@
 
 define( 'WP_USE_THEMES', false );        
 require('../../../wp-blog-header.php');
-
+//Load option by multi site id if is_multisite
+if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+	switch_to_blog((int)$_GET['id']);
+}
 //Get options
 $manifest = ( array ) get_option( 'firefox-os-bookmark' );
 //Local path
