@@ -14,10 +14,10 @@ Plugin for create the manifest.webapp file for install your site as an hosted ap
 
 * Basic manifest.webapp (domain.tld/manifest.webapp) file
 * Icons support
+* MultiSite support (read the section MultiSite)
 
 == Roadmap ==
 
-* MultiSite support
 * Multilanguage support
 * Comment all the code :-D
 
@@ -29,6 +29,12 @@ Plugin for create the manifest.webapp file for install your site as an hosted ap
 2. Search for 'Firefox OS Bookmark'
 3. Click 'Install Now'
 4. Activate the plugin on the Plugin dashboard
+
+==MultiSite==
+To enable in the multisite you need to add this rule in the .htaccess file:
+```
+RewriteRule manifest.webapp$ wp-content/plugins/firefox-os-bookmark/manifest.php [L]
+```
 
 == Changelog ==
 

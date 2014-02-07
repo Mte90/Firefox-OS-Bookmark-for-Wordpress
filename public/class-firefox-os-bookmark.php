@@ -215,7 +215,7 @@ class Firefox_OS_Bookmark {
 	 * @since    1.0.0
 	 */
 	private static function single_activate() {
-		$plugin_url = plugins_url().'/firefox-os-bookmark/manifest.php?id='.get_current_blog_id();
+		$plugin_url = plugins_url().'/firefox-os-bookmark/manifest.php';
 		
 		add_rewrite_rule( 'manifest\.webapp$', $plugin_url, 'top' );
 		
