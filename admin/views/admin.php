@@ -16,7 +16,23 @@
 <div class="wrap">
 
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
-
+	<?php
+	if ( !get_option( 'permalink_structure' ) ) {
+		echo '<div class="error"><p>The permalink are required for use this plugin.</p></div>';
+	}
+	?>
+	<script>
+		jQuery.ajax({
+			url: '<?php echo get_bloginfo( 'url' ) ?>/manifest.webapp',
+			contentType: 'application/x-web-app-manifest+json',
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				if (typeof XMLHttpRequest.responseJSON == 'undefined') {
+					jQuery('form').prepend('<div class="error"><p>Add the htaccess rule written in the readme in the multisite section.</p></div>');
+				}
+				console.warn('The 404 error it\'s normal because the mime type it\'s not recognized');
+			}
+		});
+	</script>
 	<form action="options.php" method="post">
 		Manifest path: <?php echo get_bloginfo( 'url' ) ?>/manifest.webapp
 		<?php

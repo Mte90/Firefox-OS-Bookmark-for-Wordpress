@@ -48,6 +48,6 @@ $manifest['installs_allowed_from'] = ["*"];
 //Clean JSON
 $manifest_ready = str_replace('\\','',json_encode($manifest));
 
-//header('Content-type: application/x-web-app-manifest+json');
+header('Content-type: application/x-web-app-manifest+json');
 
 echo $manifest_ready;
