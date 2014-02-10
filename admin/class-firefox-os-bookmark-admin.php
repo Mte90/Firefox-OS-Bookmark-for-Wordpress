@@ -148,36 +148,36 @@ class Firefox_OS_Bookmark_Admin {
 	function ffos_bookmark_settings() {
 
 		add_settings_section(
-				'ffos_bookmark_settings_manifest_section', 'Manifest Settings', function () {
+				'ffos_bookmark_settings_manifest_section', __('Manifest Settings', $this->plugin_slug), function () {
 			
 		}, $this->plugin_slug
 		);
 		add_settings_field(
-				$this->plugin_slug . '_name', 'Name', array( $this, 'field_name' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_name', __('Name', $this->plugin_slug), array( $this, 'field_name' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_description', 'Description', array( $this, 'field_description' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_description', __('Description', $this->plugin_slug), array( $this, 'field_description' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_developer_name', 'Developer Name', array( $this, 'field_developer_name' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_developer_name', __('Developer Name', $this->plugin_slug), array( $this, 'field_developer_name' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_developer_url', 'Site', array( $this, 'field_developer_url' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_developer_url', __('Site', $this->plugin_slug), array( $this, 'field_developer_url' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_default_locale', 'Default Locale', array( $this, 'field_default_locale' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_default_locale', __('Default Locale', $this->plugin_slug), array( $this, 'field_default_locale' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_version', 'Version', array( $this, 'field_version' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_version', __('Version', $this->plugin_slug), array( $this, 'field_version' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 
 		add_settings_section(
-				'ffos_bookmark_settings_icons_section', 'Icons Settings', function () {
+				'ffos_bookmark_settings_icons_section', __('Icons Settings', $this->plugin_slug), function () {
 			
 		}, $this->plugin_slug
 		);
 		add_settings_field(
-				$this->plugin_slug . '_icon', 'Icon', array( $this, 'field_icon' ), $this->plugin_slug, 'ffos_bookmark_settings_icons_section'
+				$this->plugin_slug . '_icon', __('Icon', $this->plugin_slug), array( $this, 'field_icon' ), $this->plugin_slug, 'ffos_bookmark_settings_icons_section'
 		);
 
 		register_setting( $this->plugin_slug, $this->plugin_slug );
@@ -240,7 +240,7 @@ class Firefox_OS_Bookmark_Admin {
 			$setting[ 'version' ] = '1.0';
 		}
 
-		echo '<input type="text" name="' . $this->plugin_slug . '[version]" value="' . esc_attr( $setting[ 'version' ] ) . '" /> Change if you update this page';
+		echo '<input type="text" name="' . $this->plugin_slug . '[version]" value="' . esc_attr( $setting[ 'version' ] ) . '" /> '.__('Change if you update this page', $this->plugin_slug);
 	}
 
 	function field_icon() {
@@ -252,7 +252,7 @@ class Firefox_OS_Bookmark_Admin {
 
 		echo '<div class="uploader">
 				<input type="text" name="' . $this->plugin_slug . '[icon]" value="' . esc_attr( $setting[ 'icon' ] ) . '" id="ffos-icon" />
-				<input type="button" class="button" name="_unique_name_button" id="_unique_name_button" value="Upload" />
+				<input type="button" class="button" name="_unique_name_button" id="_unique_name_button" value="'.__('Upload').'" />
 			  </div>
 			  ';
 	}
