@@ -20,7 +20,14 @@
     $('.add_media').on('click', function() {
       _custom_media = false;
     });
-
+    
+    jQuery('#new_language').click(function(e) {
+      jQuery('#new_language').after('<br/><input type="text" name="firefox-os-bookmark[locales][1][name]" value="" /><br/><textarea name="firefox-os-bookmark[locales][1][description]"></textarea>');
+      e.preventDefault();
+    });
+  
   });
+  
+  
 
 }(jQuery));

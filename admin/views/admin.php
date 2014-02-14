@@ -29,7 +29,7 @@
 				if (typeof XMLHttpRequest.responseJSON == 'undefined') {
 					jQuery('form').prepend('<div class="error"><p><?php _e('Add the htaccess rule written in the readme in the multisite section.', $this->plugin_slug) ?></p></div>');
 				}
-				console.warn('<?php _e('The 404 error it\'s normal because the mime type it\'s not recognized', $this->plugin_slug) ?>');
+				console.warn("<?php _e('The 404 error it\'s normal because the mime type it\'s not recognized', $this->plugin_slug) ?>");
 			}
 		});
 	</script>

@@ -148,36 +148,45 @@ class Firefox_OS_Bookmark_Admin {
 	function ffos_bookmark_settings() {
 
 		add_settings_section(
-				'ffos_bookmark_settings_manifest_section', __('Manifest Settings', $this->plugin_slug), function () {
+				'ffos_bookmark_settings_manifest_section', __( 'Manifest Settings', $this->plugin_slug ), function () {
 			
 		}, $this->plugin_slug
 		);
 		add_settings_field(
-				$this->plugin_slug . '_name', __('Name', $this->plugin_slug), array( $this, 'field_name' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_name', __( 'Name', $this->plugin_slug ), array( $this, 'field_name' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_description', __('Description', $this->plugin_slug), array( $this, 'field_description' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_description', __( 'Description', $this->plugin_slug ), array( $this, 'field_description' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_developer_name', __('Developer Name', $this->plugin_slug), array( $this, 'field_developer_name' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_developer_name', __( 'Developer Name', $this->plugin_slug ), array( $this, 'field_developer_name' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_developer_url', __('Site', $this->plugin_slug), array( $this, 'field_developer_url' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_developer_url', __( 'Site', $this->plugin_slug ), array( $this, 'field_developer_url' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_default_locale', __('Default Locale', $this->plugin_slug), array( $this, 'field_default_locale' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_default_locale', __( 'Default Locale', $this->plugin_slug ), array( $this, 'field_default_locale' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_version', __('Version', $this->plugin_slug), array( $this, 'field_version' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_version', __( 'Version', $this->plugin_slug ), array( $this, 'field_version' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 
 		add_settings_section(
-				'ffos_bookmark_settings_icons_section', __('Icons Settings', $this->plugin_slug), function () {
+				'ffos_bookmark_settings_icons_section', __( 'Icons Settings', $this->plugin_slug ), function () {
 			
 		}, $this->plugin_slug
 		);
 		add_settings_field(
-				$this->plugin_slug . '_icon', __('Icon', $this->plugin_slug), array( $this, 'field_icon' ), $this->plugin_slug, 'ffos_bookmark_settings_icons_section'
+				$this->plugin_slug . '_icon', __( 'Icon', $this->plugin_slug ), array( $this, 'field_icon' ), $this->plugin_slug, 'ffos_bookmark_settings_icons_section'
+		);
+
+		add_settings_section(
+				'ffos_bookmark_settings_locales_section', __( 'Locales Settings', $this->plugin_slug ), function () {
+			
+		}, $this->plugin_slug
+		);
+		add_settings_field(
+				$this->plugin_slug . '_locales', __( 'Locales', $this->plugin_slug ), array( $this, 'field_locales' ), $this->plugin_slug, 'ffos_bookmark_settings_locales_section'
 		);
 
 		register_setting( $this->plugin_slug, $this->plugin_slug );
@@ -240,21 +249,35 @@ class Firefox_OS_Bookmark_Admin {
 			$setting[ 'version' ] = '1.0';
 		}
 
-		echo '<input type="text" name="' . $this->plugin_slug . '[version]" value="' . esc_attr( $setting[ 'version' ] ) . '" /> '.__('Change if you update this page', $this->plugin_slug);
+		echo '<input type="text" name="' . $this->plugin_slug . '[version]" value="' . esc_attr( $setting[ 'version' ] ) . '" /> ' . __( 'Change if you update this page', $this->plugin_slug );
 	}
 
 	function field_icon() {
 		$setting = ( array ) get_option( $this->plugin_slug );
-		
+
 		if ( !isset( $setting[ 'icon' ] ) ) {
 			$setting[ 'icon' ] = '';
 		}
 
 		echo '<div class="uploader">
 				<input type="text" name="' . $this->plugin_slug . '[icon]" value="' . esc_attr( $setting[ 'icon' ] ) . '" id="ffos-icon" />
-				<input type="button" class="button" name="_unique_name_button" id="_unique_name_button" value="'.__('Upload').'" />
+				<input type="button" class="button" name="_unique_name_button" id="_unique_name_button" value="' . __( 'Upload' ) . '" />
 			  </div>
 			  ';
+	}
+
+	function field_locales() {
+		$setting = ( array ) get_option( $this->plugin_slug );
+		echo '<a href="#" id="new_language">' . __( 'Add new language' ) . '</a><br>';
+		if ( isset( $setting[ 'locales' ] ) ) {
+			$locales = $setting[ 'locales' ] ;
+			$i = 0;
+			foreach ( $locales as &$locale ) {
+				$i++;
+				echo '<input type="text" name="' . $this->plugin_slug . '[locales][' . $i . '][name]" value="' . $locale[ 'name' ] . '" /><br>';
+				echo '<textarea name="' . $this->plugin_slug . '[locales][' . $i . '][description]">' . $locale[ 'description' ] . '</textarea>';
+			}
+		}
 	}
 
 }
