@@ -44,7 +44,7 @@ if ( ! is_wp_error( $img ) ) {
     }
 }
 $manifest['installs_allowed_from'] = ["*"];
-
+//Get locales info and prepare for the manifest
 $locales = $manifest['locales'];
 unset($manifest['locales']);
 $locales_clean = array();
@@ -56,6 +56,6 @@ $manifest['locales'] = $locales_clean;
 //Clean JSON
 $manifest_ready = str_replace('\\','',json_encode($manifest));
 
-//header('Content-type: application/x-web-app-manifest+json');
+header('Content-type: application/x-web-app-manifest+json');
 
 echo $manifest_ready;
