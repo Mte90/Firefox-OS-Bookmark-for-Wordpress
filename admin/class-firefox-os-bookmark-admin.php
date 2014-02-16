@@ -186,7 +186,7 @@ class Firefox_OS_Bookmark_Admin {
 		}, $this->plugin_slug
 		);
 		add_settings_field(
-				$this->plugin_slug . '_locales', __( 'Locales', $this->plugin_slug ), array( $this, 'field_locales' ), $this->plugin_slug, 'ffos_bookmark_settings_locales_section'
+				$this->plugin_slug . '_locales', __( 'App data for language', $this->plugin_slug ), array( $this, 'field_locales' ), $this->plugin_slug, 'ffos_bookmark_settings_locales_section'
 		);
 
 		register_setting( $this->plugin_slug, $this->plugin_slug );
@@ -274,12 +274,13 @@ class Firefox_OS_Bookmark_Admin {
 			foreach ( $locales as &$locale ) {
 				if ( isset($locale[ 'name' ]) && !empty($locale[ 'name' ]) ) {
 					$i++;
-					echo '<br>' . __( 'Language', $this->plugin_slug ) . ':<br><input type="text" name="' . $this->plugin_slug . '[locales][' . $i . '][name]" value="' . $locale[ 'name' ] . '" /><br>';
+					echo '<br>' . __( 'Language', $this->plugin_slug ) . ':<br><input type="text" name="' . $this->plugin_slug . '[locales][' . $i . '][language]" value="' . $locale[ 'language' ] . '" /><br>';
+					echo __( 'Name', $this->plugin_slug ) . ':<br><input type="text" name="' . $this->plugin_slug . '[locales][' . $i . '][name]" value="' . $locale[ 'name' ] . '" /><br>';
 					echo __( 'Description', $this->plugin_slug ) . ':<br><textarea name="' . $this->plugin_slug . '[locales][' . $i . '][description]">' . $locale[ 'description' ] . '</textarea>';
 				}
 			}
 		}
-		echo '<br><a href="#" id="new_language" data-language="' . __( 'Language', $this->plugin_slug ) . '" data-description="' . __( 'Description', $this->plugin_slug ) . '" data-number="' . ($i + 1) . '">' . __( 'Add new language', $this->plugin_slug ) . '</a><br>';
+		echo '<br><a href="#" id="new_language" data-name="' . __( 'Name', $this->plugin_slug ) . '" data-language="' . __( 'Language', $this->plugin_slug ) . '" data-description="' . __( 'Description', $this->plugin_slug ) . '" data-number="' . ($i + 1) . '">' . __( 'Add new language', $this->plugin_slug ) . '</a><br>';
 	}
 
 }

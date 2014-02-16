@@ -45,9 +45,17 @@ if ( ! is_wp_error( $img ) ) {
 }
 $manifest['installs_allowed_from'] = ["*"];
 
+$locales = $manifest['locales'];
+unset($manifest['locales']);
+$locales_clean = array();
+foreach ( $locales as $key => $value ) {
+	$locales_clean[$value['language']] = array('name' => $value['name'],'description' => $value['description']);
+}
+$manifest['locales'] = $locales_clean;
+
 //Clean JSON
 $manifest_ready = str_replace('\\','',json_encode($manifest));
 
-header('Content-type: application/x-web-app-manifest+json');
+//header('Content-type: application/x-web-app-manifest+json');
 
 echo $manifest_ready;
