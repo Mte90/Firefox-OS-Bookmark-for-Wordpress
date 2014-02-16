@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/firefox-os-bookmark\n"
-"POT-Creation-Date: 2014-02-16 23:42+0100\n"
-"PO-Revision-Date: 2014-02-16 23:42+0100\n"
+"POT-Creation-Date: 2014-02-16 23:54+0100\n"
+"PO-Revision-Date: 2014-02-16 23:54+0100\n"
 "Last-Translator: Mte90 <mte90net@gmail.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
 "Language: en_US\n"
@@ -28,67 +28,77 @@ msgid "Settings"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:151
-msgid "Manifest Settings"
+msgid "Plugin Settings"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:156
-#: admin/class-firefox-os-bookmark-admin.php:278
-#: admin/class-firefox-os-bookmark-admin.php:283
-msgid "Name"
+msgid ""
+"Show info box on Firefox OS Devices for ask to install the app (15 days for "
+"show again the box)"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:159
-#: admin/class-firefox-os-bookmark-admin.php:279
-#: admin/class-firefox-os-bookmark-admin.php:283
-msgid "Description"
-msgstr ""
-
-#: admin/class-firefox-os-bookmark-admin.php:162
-msgid "Developer Name"
+#: admin/class-firefox-os-bookmark-admin.php:160
+msgid "Manifest Settings"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:165
-msgid "Site"
+#: admin/class-firefox-os-bookmark-admin.php:293
+#: admin/class-firefox-os-bookmark-admin.php:298
+msgid "Name"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:168
-msgid "Default Locale"
+#: admin/class-firefox-os-bookmark-admin.php:294
+#: admin/class-firefox-os-bookmark-admin.php:298
+msgid "Description"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:171
-msgid "Version"
+msgid "Developer Name"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:175
-msgid "Icons Settings"
+#: admin/class-firefox-os-bookmark-admin.php:174
+msgid "Site"
+msgstr ""
+
+#: admin/class-firefox-os-bookmark-admin.php:177
+msgid "Default Locale"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:180
-msgid "Icon"
+msgid "Version"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:184
-msgid "Locales Settings"
+msgid "Icons Settings"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:189
+msgid "Icon"
+msgstr ""
+
+#: admin/class-firefox-os-bookmark-admin.php:193
+msgid "Locales Settings"
+msgstr ""
+
+#: admin/class-firefox-os-bookmark-admin.php:198
 msgid "App data for language"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:252
+#: admin/class-firefox-os-bookmark-admin.php:267
 msgid "Change if you update this page"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:264
+#: admin/class-firefox-os-bookmark-admin.php:279
 msgid "Upload"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:277
-#: admin/class-firefox-os-bookmark-admin.php:283
+#: admin/class-firefox-os-bookmark-admin.php:292
+#: admin/class-firefox-os-bookmark-admin.php:298
 msgid "Language"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:283
+#: admin/class-firefox-os-bookmark-admin.php:298
 msgid "Add new language"
 msgstr ""
 
