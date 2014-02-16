@@ -4,10 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/firefox-os-bookmark\n"
-"POT-Creation-Date: 2014-02-08 00:38+0100\n"
-"PO-Revision-Date: 2014-02-08 00:38+0100\n"
+"POT-Creation-Date: 2014-02-16 00:50+0100\n"
+"PO-Revision-Date: 2014-02-16 00:50+0100\n"
 "Last-Translator: Mte90 <mte90net@gmail.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,7 +17,6 @@ msgstr ""
 "esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
 "X-Poedit-Basepath: ../\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"Language: en_US\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin/class-firefox-os-bookmark-admin.php:122
@@ -36,6 +36,8 @@ msgid "Name"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:159
+#: admin/class-firefox-os-bookmark-admin.php:271
+#: admin/class-firefox-os-bookmark-admin.php:278
 msgid "Description"
 msgstr ""
 
@@ -63,12 +65,29 @@ msgstr ""
 msgid "Icon"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:243
+#: admin/class-firefox-os-bookmark-admin.php:184
+msgid "Locales Settings"
+msgstr ""
+
+#: admin/class-firefox-os-bookmark-admin.php:189
+msgid "Locales"
+msgstr ""
+
+#: admin/class-firefox-os-bookmark-admin.php:252
 msgid "Change if you update this page"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:255
+#: admin/class-firefox-os-bookmark-admin.php:264
 msgid "Upload"
+msgstr ""
+
+#: admin/class-firefox-os-bookmark-admin.php:271
+#: admin/class-firefox-os-bookmark-admin.php:277
+msgid "Language"
+msgstr ""
+
+#: admin/class-firefox-os-bookmark-admin.php:271
+msgid "Add new language"
 msgstr ""
 
 #: admin/views/admin.php:21

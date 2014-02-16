@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/plugin-name\n"
-"POT-Creation-Date: 2014-02-09 21:20+0100\n"
-"PO-Revision-Date: 2014-02-09 21:20+0100\n"
+"POT-Creation-Date: 2014-02-16 00:50+0100\n"
+"PO-Revision-Date: 2014-02-16 01:07+0100\n"
 "Last-Translator: FULL NAME <email@example.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
 "Language: en_US\n"
@@ -36,6 +36,8 @@ msgid "Name"
 msgstr "Nome"
 
 #: admin/class-firefox-os-bookmark-admin.php:159
+#: admin/class-firefox-os-bookmark-admin.php:271
+#: admin/class-firefox-os-bookmark-admin.php:278
 msgid "Description"
 msgstr "Descrizione"
 
@@ -63,13 +65,30 @@ msgstr "Configurazione Icona"
 msgid "Icon"
 msgstr "Icona"
 
-#: admin/class-firefox-os-bookmark-admin.php:243
+#: admin/class-firefox-os-bookmark-admin.php:184
+msgid "Locales Settings"
+msgstr "Configurazione Lingue"
+
+#: admin/class-firefox-os-bookmark-admin.php:189
+msgid "Locales"
+msgstr "Località"
+
+#: admin/class-firefox-os-bookmark-admin.php:252
 msgid "Change if you update this page"
 msgstr "Cambialo se aggiorni la pagina"
 
-#: admin/class-firefox-os-bookmark-admin.php:255
+#: admin/class-firefox-os-bookmark-admin.php:264
 msgid "Upload"
 msgstr "Carica"
+
+#: admin/class-firefox-os-bookmark-admin.php:271
+#: admin/class-firefox-os-bookmark-admin.php:277
+msgid "Language"
+msgstr "Lingua"
+
+#: admin/class-firefox-os-bookmark-admin.php:271
+msgid "Add new language"
+msgstr "Aggiungi una nuova lingua"
 
 #: admin/views/admin.php:21
 msgid "The permalink are required for use this plugin."
