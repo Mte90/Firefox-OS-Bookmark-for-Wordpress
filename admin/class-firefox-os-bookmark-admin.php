@@ -261,23 +261,25 @@ class Firefox_OS_Bookmark_Admin {
 
 		echo '<div class="uploader">
 				<input type="text" name="' . $this->plugin_slug . '[icon]" value="' . esc_attr( $setting[ 'icon' ] ) . '" id="ffos-icon" />
-				<input type="button" class="button" name="_unique_name_button" id="_unique_name_button" value="' . __( 'Upload' ) . '" />
+				<input type="button" class="button" name="_unique_name_button" id="_unique_name_button" value="' . __( 'Upload', $this->plugin_slug ) . '" />
 			  </div>
 			  ';
 	}
 
 	function field_locales() {
 		$setting = ( array ) get_option( $this->plugin_slug );
-		echo '<a href="#" id="new_language">' . __( 'Add new language' ) . '</a><br>';
+		$i = 0;
 		if ( isset( $setting[ 'locales' ] ) ) {
-			$locales = $setting[ 'locales' ] ;
-			$i = 0;
+			$locales = $setting[ 'locales' ];
 			foreach ( $locales as &$locale ) {
-				$i++;
-				echo '<input type="text" name="' . $this->plugin_slug . '[locales][' . $i . '][name]" value="' . $locale[ 'name' ] . '" /><br>';
-				echo '<textarea name="' . $this->plugin_slug . '[locales][' . $i . '][description]">' . $locale[ 'description' ] . '</textarea>';
+				if ( isset($locale[ 'name' ]) && !empty($locale[ 'name' ]) ) {
+					$i++;
+					echo '<br>' . __( 'Language', $this->plugin_slug ) . ':<br><input type="text" name="' . $this->plugin_slug . '[locales][' . $i . '][name]" value="' . $locale[ 'name' ] . '" /><br>';
+					echo __( 'Description', $this->plugin_slug ) . ':<br><textarea name="' . $this->plugin_slug . '[locales][' . $i . '][description]">' . $locale[ 'description' ] . '</textarea>';
+				}
 			}
 		}
+		echo '<br><a href="#" id="new_language" data-language="' . __( 'Language', $this->plugin_slug ) . '" data-description="' . __( 'Description', $this->plugin_slug ) . '" data-number="' . ($i + 1) . '">' . __( 'Add new language', $this->plugin_slug ) . '</a><br>';
 	}
 
 }

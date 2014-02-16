@@ -22,7 +22,7 @@
     });
     
     jQuery('#new_language').click(function(e) {
-      jQuery('#new_language').after('<br/><input type="text" name="firefox-os-bookmark[locales][1][name]" value="" /><br/><textarea name="firefox-os-bookmark[locales][1][description]"></textarea>');
+      jQuery('#new_language').after('<br/>' + jQuery('#new_language').data('language') +':<br/><input type="text" name="firefox-os-bookmark[locales][' + jQuery('#new_language').data('number') +'][name]" value="" /><br/>' + jQuery('#new_language').data('description') +':<br/><textarea name="firefox-os-bookmark[locales][' + jQuery('#new_language').data('number') +'][description]"></textarea>');
       e.preventDefault();
     });
   
