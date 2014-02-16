@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/firefox-os-bookmark\n"
-"POT-Creation-Date: 2014-02-16 00:50+0100\n"
-"PO-Revision-Date: 2014-02-16 00:50+0100\n"
+"POT-Creation-Date: 2014-02-16 23:42+0100\n"
+"PO-Revision-Date: 2014-02-16 23:42+0100\n"
 "Last-Translator: Mte90 <mte90net@gmail.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
 "Language: en_US\n"
@@ -32,12 +32,14 @@ msgid "Manifest Settings"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:156
+#: admin/class-firefox-os-bookmark-admin.php:278
+#: admin/class-firefox-os-bookmark-admin.php:283
 msgid "Name"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:159
-#: admin/class-firefox-os-bookmark-admin.php:271
-#: admin/class-firefox-os-bookmark-admin.php:278
+#: admin/class-firefox-os-bookmark-admin.php:279
+#: admin/class-firefox-os-bookmark-admin.php:283
 msgid "Description"
 msgstr ""
 
@@ -70,7 +72,7 @@ msgid "Locales Settings"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:189
-msgid "Locales"
+msgid "App data for language"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:252
@@ -81,12 +83,12 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:271
 #: admin/class-firefox-os-bookmark-admin.php:277
+#: admin/class-firefox-os-bookmark-admin.php:283
 msgid "Language"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:271
+#: admin/class-firefox-os-bookmark-admin.php:283
 msgid "Add new language"
 msgstr ""
 

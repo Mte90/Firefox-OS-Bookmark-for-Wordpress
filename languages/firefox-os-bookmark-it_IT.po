@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/plugin-name\n"
-"POT-Creation-Date: 2014-02-16 00:50+0100\n"
-"PO-Revision-Date: 2014-02-16 01:07+0100\n"
+"POT-Creation-Date: 2014-02-16 23:42+0100\n"
+"PO-Revision-Date: 2014-02-16 23:42+0100\n"
 "Last-Translator: FULL NAME <email@example.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
 "Language: en_US\n"
@@ -32,12 +32,14 @@ msgid "Manifest Settings"
 msgstr "Configurazione Manifest"
 
 #: admin/class-firefox-os-bookmark-admin.php:156
+#: admin/class-firefox-os-bookmark-admin.php:278
+#: admin/class-firefox-os-bookmark-admin.php:283
 msgid "Name"
 msgstr "Nome"
 
 #: admin/class-firefox-os-bookmark-admin.php:159
-#: admin/class-firefox-os-bookmark-admin.php:271
-#: admin/class-firefox-os-bookmark-admin.php:278
+#: admin/class-firefox-os-bookmark-admin.php:279
+#: admin/class-firefox-os-bookmark-admin.php:283
 msgid "Description"
 msgstr "Descrizione"
 
@@ -70,8 +72,9 @@ msgid "Locales Settings"
 msgstr "Configurazione Lingue"
 
 #: admin/class-firefox-os-bookmark-admin.php:189
-msgid "Locales"
-msgstr "Località"
+#, fuzzy
+msgid "App data for language"
+msgstr "Dati applicazione per lingua"
 
 #: admin/class-firefox-os-bookmark-admin.php:252
 msgid "Change if you update this page"
@@ -81,12 +84,12 @@ msgstr "Cambialo se aggiorni la pagina"
 msgid "Upload"
 msgstr "Carica"
 
-#: admin/class-firefox-os-bookmark-admin.php:271
 #: admin/class-firefox-os-bookmark-admin.php:277
+#: admin/class-firefox-os-bookmark-admin.php:283
 msgid "Language"
 msgstr "Lingua"
 
-#: admin/class-firefox-os-bookmark-admin.php:271
+#: admin/class-firefox-os-bookmark-admin.php:283
 msgid "Add new language"
 msgstr "Aggiungi una nuova lingua"
 
@@ -106,3 +109,6 @@ msgstr "L'errore 404 è normale perchè è causato dal mime type non riconosciut
 #: admin/views/admin.php:37
 msgid "Manifest path"
 msgstr "Percorso Manifest"
+
+#~ msgid "Locales"
+#~ msgstr "Località"
