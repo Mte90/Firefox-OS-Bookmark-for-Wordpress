@@ -148,6 +148,15 @@ class Firefox_OS_Bookmark_Admin {
 	function ffos_bookmark_settings() {
 
 		add_settings_section(
+				'ffos_bookmark_settings_section', __( 'Plugin Settings', $this->plugin_slug ), function () {
+			
+		}, $this->plugin_slug
+		);
+		add_settings_field(
+				$this->plugin_slug . '_alert', __( 'Show info box on Firefox OS Devices for ask to install the app (15 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
+		);
+		
+		add_settings_section(
 				'ffos_bookmark_settings_manifest_section', __( 'Manifest Settings', $this->plugin_slug ), function () {
 			
 		}, $this->plugin_slug
@@ -192,6 +201,12 @@ class Firefox_OS_Bookmark_Admin {
 		register_setting( $this->plugin_slug, $this->plugin_slug );
 	}
 
+	function field_alert() {
+		$setting = ( array ) get_option( $this->plugin_slug );
+
+		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert]" ' . checked( 1, $setting[ 'alert' ], false ) . ' />';
+	}
+	
 	function field_name() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
