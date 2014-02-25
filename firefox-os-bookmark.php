@@ -31,12 +31,6 @@ if ( ! defined( 'WPINC' ) ) {
  * Public-Facing Functionality
  *----------------------------------------------------------------------------*/
 
-/*
- * @TODO:
- *
- * - eliminare la parte public
- *
- */
 require_once( plugin_dir_path( __FILE__ ) . 'public/class-firefox-os-bookmark.php' );
 
 /*

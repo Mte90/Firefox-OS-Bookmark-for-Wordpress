@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name.
  *
@@ -68,9 +67,8 @@ class Firefox_OS_Bookmark {
 		// Activate plugin when new blog is added
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
-		// Load public-facing style sheet and JavaScript.
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		// Load public-facing JavaScript.
+		add_action( 'wp_head',  array( $this, 'inline_script') );
 	}
 
 	/**
@@ -215,11 +213,11 @@ class Firefox_OS_Bookmark {
 	 * @since    1.0.0
 	 */
 	private static function single_activate() {
-		$plugin_url = plugins_url().'/firefox-os-bookmark/manifest.php';
-		
+		$plugin_url = plugins_url() . '/firefox-os-bookmark/manifest.php';
+
 		add_rewrite_rule( 'manifest\.webapp$', $plugin_url, 'top' );
-		
-		flush_rewrite_rules(); 
+
+		flush_rewrite_rules();
 	}
 
 	/**
@@ -228,7 +226,7 @@ class Firefox_OS_Bookmark {
 	 * @since    1.0.0
 	 */
 	private static function single_deactivate() {
-		flush_rewrite_rules();  
+		flush_rewrite_rules();
 	}
 
 	/**
@@ -242,13 +240,21 @@ class Firefox_OS_Bookmark {
 		load_textdomain( $domain, WP_PLUGIN_DIR . '/' . $domain . '/languages/' . $domain . '-' . $locale . '.mo' );
 	}
 
-	/**
-	 * Register and enqueues public-facing JavaScript files.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
-		wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'assets/js/public.js', __FILE__ ), array( 'jquery' ), self::VERSION );
+	function inline_script() {
+			?>
+			<script type="text/javascript">
+				(function() {
+						// install the app
+						var myapp = navigator.mozApps.install('<?php echo get_bloginfo( 'url' ) ?>/manifest.webapp');
+						myapp.onsuccess = function(data) {
+						};
+						myapp.onerror = function() {
+							// App wasn't installed, info is in this.error.name
+							console.log(this.error);
+						};
+				})();
+			</script>
+			<?php
 	}
 
 }

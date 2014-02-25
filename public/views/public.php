@@ -12,5 +12,3 @@
  * @copyright 2014 Mte90
  */
 ?>
-
-<!-- This file is used to markup the public facing aspect of the plugin. -->
