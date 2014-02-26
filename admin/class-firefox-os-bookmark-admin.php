@@ -153,7 +153,7 @@ class Firefox_OS_Bookmark_Admin {
 		}, $this->plugin_slug
 		);
 		add_settings_field(
-				$this->plugin_slug . '_alert', __( 'Show info box on Firefox OS Devices for ask to install the app (15 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
+				$this->plugin_slug . '_alert', __( 'Show info box on Firefox OS Devices for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
 		);
 		
 		add_settings_section(

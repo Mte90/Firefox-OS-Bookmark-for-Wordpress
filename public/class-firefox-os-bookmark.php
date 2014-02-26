@@ -68,7 +68,9 @@ class Firefox_OS_Bookmark {
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
 		// Load public-facing JavaScript.
-		add_action( 'wp_head',  array( $this, 'inline_script') );
+		if ( true == get_option( 'firefox-os-bookmark' ) ) {
+			add_action( 'wp_head', array( $this, 'inline_script' ) );
+		}
 	}
 
 	/**
@@ -241,20 +243,32 @@ class Firefox_OS_Bookmark {
 	}
 
 	function inline_script() {
-			?>
-			<script type="text/javascript">
-				(function() {
-						// install the app
-						var myapp = navigator.mozApps.install('<?php echo get_bloginfo( 'url' ) ?>/manifest.webapp');
-						myapp.onsuccess = function(data) {
-						};
-						myapp.onerror = function() {
-							// App wasn't installed, info is in this.error.name
-							console.log(this.error);
-						};
-				})();
-			</script>
-			<?php
+		?>
+		<script type="text/javascript">
+			try {
+				new MozActivity({});
+			} catch (e) {
+				if (document.cookie.replace(/(?:(?:^|.*;\s*)appTime\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "false") {
+					var checkIfInstalled = navigator.mozApps.getSelf();
+					checkIfInstalled.onsuccess = function() {
+						if (!checkIfInstalled.result) {
+							navigator.mozApps.install('<?php echo get_bloginfo( 'url' ) ?>/manifest.webapp')
+									.onsuccess(function(data) {
+										var now = new Date;
+										now.setDate(now.getDate() + 365);
+										document.cookie = 'appTime=false; expires=' + now.toGMTString();
+									}).onerror(function() {
+								var now = new Date;
+								now.setDate(now.getDate() + 30);
+								console.log("Install failed\n\n:" + installApp.error.name);
+								document.cookie = 'appTime=false; expires=' + now.toGMTString();
+							});
+						}
+					};
+				}
+			}
+		</script>
+		<?php
 	}
 
 }

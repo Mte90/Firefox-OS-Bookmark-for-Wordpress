@@ -16,10 +16,10 @@ Plugin for create the manifest.webapp file for install your site as an hosted ap
 * Icons support
 * MultiSite support (read the section MultiSite)
 * Manifest support for multilanguage
+* Popup installation (settings)
 
 == Roadmap ==
 
-* Popup installation
 * Comment all the code :-D
 
 == Installation ==
