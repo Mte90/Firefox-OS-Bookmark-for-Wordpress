@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/plugin-name\n"
-"POT-Creation-Date: 2014-02-16 23:53+0100\n"
-"PO-Revision-Date: 2014-02-16 23:54+0100\n"
+"POT-Creation-Date: 2014-02-27 00:34+0100\n"
+"PO-Revision-Date: 2014-02-27 00:37+0100\n"
 "Last-Translator: FULL NAME <email@example.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
 "Language: en_US\n"
@@ -33,11 +33,11 @@ msgstr "Configurazione Plugin"
 
 #: admin/class-firefox-os-bookmark-admin.php:156
 msgid ""
-"Show info box on Firefox OS Devices for ask to install the app (15 days for "
+"Show info box on Firefox OS Devices for ask to install the app (30 days for "
 "show again the box)"
 msgstr ""
 "Mostra una finestra sui dispositivi con Firefox OS per chiedere di "
-"installare l'applicazione (verrà mostrato ogni 15 giorni)"
+"installare l'applicazione (verrà mostrato ogni 30 giorni)"
 
 #: admin/class-firefox-os-bookmark-admin.php:160
 msgid "Manifest Settings"
@@ -84,7 +84,6 @@ msgid "Locales Settings"
 msgstr "Configurazione Lingue"
 
 #: admin/class-firefox-os-bookmark-admin.php:198
-#, fuzzy
 msgid "App data for language"
 msgstr "Dati applicazione per lingua"
 
@@ -114,13 +113,13 @@ msgid "Add the htaccess rule written in the readme in the multisite section."
 msgstr ""
 "Aggiungi la regola htaccess presente nel readme nella sezione multisite"
 
-#: admin/views/admin.php:32
-msgid "The 404 error it's normal because the mime type it's not recognized"
-msgstr "L'errore 404 è normale perchè è causato dal mime type non riconosciuto"
-
-#: admin/views/admin.php:37
+#: admin/views/admin.php:36
 msgid "Manifest path"
 msgstr "Percorso Manifest"
+
+#~ msgid "The 404 error it's normal because the mime type it's not recognized"
+#~ msgstr ""
+#~ "L'errore 404 è normale perchè è causato dal mime type non riconosciuto"
 
 #~ msgid "Locales"
 #~ msgstr "Località"

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/firefox-os-bookmark\n"
-"POT-Creation-Date: 2014-02-16 23:54+0100\n"
-"PO-Revision-Date: 2014-02-16 23:54+0100\n"
+"POT-Creation-Date: 2014-02-27 00:34+0100\n"
+"PO-Revision-Date: 2014-02-27 00:34+0100\n"
 "Last-Translator: Mte90 <mte90net@gmail.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
 "Language: en_US\n"
@@ -33,7 +33,7 @@ msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:156
 msgid ""
-"Show info box on Firefox OS Devices for ask to install the app (15 days for "
+"Show info box on Firefox OS Devices for ask to install the app (30 days for "
 "show again the box)"
 msgstr ""
 
@@ -110,10 +110,6 @@ msgstr ""
 msgid "Add the htaccess rule written in the readme in the multisite section."
 msgstr ""
 
-#: admin/views/admin.php:32
-msgid "The 404 error it's normal because the mime type it's not recognized"
-msgstr ""
-
-#: admin/views/admin.php:37
+#: admin/views/admin.php:36
 msgid "Manifest path"
 msgstr ""
