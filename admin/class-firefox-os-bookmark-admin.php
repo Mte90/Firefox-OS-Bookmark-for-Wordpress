@@ -59,9 +59,8 @@ class Firefox_OS_Bookmark_Admin {
 		add_action( 'admin_init', array( $this, 'ffos_bookmark_settings' ) );
 		// Add the options page and menu item.
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
-
+		//Add the javascript for the settings page
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
-
 		// Add an action link pointing to the options page.
 		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_slug . '.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
@@ -103,8 +102,9 @@ class Firefox_OS_Bookmark_Admin {
 
 		$screen = get_current_screen();
 		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), Firefox_OS_Bookmark::VERSION );
+			//Loading the media for the media picker
 			wp_enqueue_media();
+			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), Firefox_OS_Bookmark::VERSION );
 		}
 	}
 

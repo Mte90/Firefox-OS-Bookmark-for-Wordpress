@@ -67,7 +67,7 @@ class Firefox_OS_Bookmark {
 		// Activate plugin when new blog is added
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
-		// Load public-facing JavaScript.
+		// Load public-facing JavaScript after check the settings
 		$check = get_option( 'firefox-os-bookmark' );
 		if ( isset( $check[ 'alert' ][ 'ff' ] ) or isset( $check[ 'alert' ][ 'ffos' ] ) ) {
 			add_action( 'wp_head', array( $this, 'inline_script' ) );
@@ -216,10 +216,10 @@ class Firefox_OS_Bookmark {
 	 * @since    1.0.0
 	 */
 	private static function single_activate() {
+		//Insert the redirect
+		//Some times this rules not work but the htaccess rule in the readme fix the problem
 		$plugin_url = plugins_url() . '/firefox-os-bookmark/manifest.php';
-
 		add_rewrite_rule( 'manifest\.webapp$', $plugin_url, 'top' );
-
 		flush_rewrite_rules();
 	}
 
@@ -244,6 +244,8 @@ class Firefox_OS_Bookmark {
 	}
 
 	function inline_script() {
+		//Javascript code for install the manifest
+		//Check with cookie if the alert was showed for not annoying the user
 		?>
 		<script type="text/javascript">
 			function load_manifest() {
@@ -268,11 +270,14 @@ class Firefox_OS_Bookmark {
 			}
 		<?php
 		$check = get_option( 'firefox-os-bookmark' );
+		//Show the alert only on firefox/firefox for Android
 		if ( isset( $check[ 'alert' ][ 'ff' ] ) ) {
 			?>
 				if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
 					load_manifest();
 			<?php
+			//Show the alert only on FirefoxOS
+			//TODO: better check
 			if ( isset( $check[ 'alert' ][ 'ffos' ] ) ) {
 				?>
 						try {

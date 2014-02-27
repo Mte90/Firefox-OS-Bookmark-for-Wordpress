@@ -19,12 +19,13 @@ $manifest = ( array ) get_option( 'firefox-os-bookmark' );
 if ( isset( $manifest[ 'icon' ] ) ) {
 	//Local path
 	$clean_url = ABSPATH . str_replace( get_bloginfo( 'url' ), '', $manifest[ 'icon' ] );
-	//Absolute url
+	//Absolute url for icon
 	$url = parse_url( dirname( $manifest[ 'icon' ] ) );
 	$img = wp_get_image_editor( $clean_url );
 	unset( $manifest[ 'icon' ] );
 	$manifest[ 'icons' ] = array();
-
+	
+	//Resize the icon
 	if ( !is_wp_error( $img ) ) {
 
 		$sizes_array = array(
@@ -47,7 +48,7 @@ if ( isset( $manifest[ 'icon' ] ) ) {
 	}
 }
 $manifest[ 'installs_allowed_from' ] = "*";
-//Get locales info and prepare for the manifest
+//Get locales info
 if ( isset( $manifest[ 'locales' ] ) ) {
 	$locales = $manifest[ 'locales' ];
 	unset( $manifest[ 'locales' ] );
@@ -64,6 +65,8 @@ $manifest[ 'developer' ][ 'name' ] = str_replace( '"', "'", $manifest[ 'develope
 //Clean JSON
 $manifest_ready = str_replace( '\\', '', json_encode( $manifest ) );
 
+//Set the mime type
 header( 'Content-type: application/x-web-app-manifest+json' );
 
+//Clean and print
 echo str_replace('"installs_allowed_from":"*"','"installs_allowed_from":["*"]',$manifest_ready);

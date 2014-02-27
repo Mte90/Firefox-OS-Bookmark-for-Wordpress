@@ -1,14 +1,14 @@
 === Firefox OS Bookmark ===  
 Contributors: Mte90  
 Donate link: http://mte90.net  
-Tags: mobile, bookmark  
+Tags: mobile, bookmark, firefox os, firefox  
 Requires at least: 3.8  
 Tested up to: 3.8  
 Stable tag: 1.0.0  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
-Plugin for create the manifest.webapp file for install your site as an hosted app on Firefox OS!
+Plugin for create the manifest.webapp file for install your site as an hosted app on Firefox OS/Firefox/Firefox for Android!
 
 == Features ==
 
@@ -20,7 +20,7 @@ Plugin for create the manifest.webapp file for install your site as an hosted ap
 
 == Roadmap ==
 
-* Comment all the code :-D
+* New magic unknown features!
 
 == Installation ==
 
