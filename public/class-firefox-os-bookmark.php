@@ -68,7 +68,8 @@ class Firefox_OS_Bookmark {
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
 		// Load public-facing JavaScript.
-		if ( true == get_option( 'firefox-os-bookmark' ) ) {
+		$check = get_option( 'firefox-os-bookmark' );
+		if ( isset( $check[ 'alert' ][ 'ff' ] ) or isset( $check[ 'alert' ][ 'ffos' ] ) ) {
 			add_action( 'wp_head', array( $this, 'inline_script' ) );
 		}
 	}
@@ -245,20 +246,18 @@ class Firefox_OS_Bookmark {
 	function inline_script() {
 		?>
 		<script type="text/javascript">
-			try {
-				new MozActivity({});
-			} catch (e) {
+			function load_manifest() {
 				if (document.cookie.replace(/(?:(?:^|.*;\s*)appTime\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "false") {
 					var checkIfInstalled = navigator.mozApps.getSelf();
 					checkIfInstalled.onsuccess = function() {
 						if (!checkIfInstalled.result) {
-							navigator.mozApps.install('<?php echo get_bloginfo( 'url' ) ?>/manifest.webapp')
-									.onsuccess(function(data) {
-										var now = new Date;
-										now.setDate(now.getDate() + 365);
-										document.cookie = 'appTime=false; expires=' + now.toGMTString();
-									}).onerror(function() {
-								var now = new Date;
+							var now = new Date;
+							m_app = navigator.mozApps.install('<?php echo get_bloginfo( 'url' ) ?>/manifest.webapp');
+							m_app.onsuccess(function(data) {
+								now.setDate(now.getDate() + 365);
+								document.cookie = 'appTime=false; expires=' + now.toGMTString();
+							});
+							m_app.onerror(function() {
 								now.setDate(now.getDate() + 30);
 								console.log("Install failed\n\n:" + installApp.error.name);
 								document.cookie = 'appTime=false; expires=' + now.toGMTString();
@@ -267,6 +266,23 @@ class Firefox_OS_Bookmark {
 					};
 				}
 			}
+		<?php
+		$check = get_option( 'firefox-os-bookmark' );
+		if ( isset( $check[ 'alert' ][ 'ff' ] ) ) {
+			?>
+				if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+					load_manifest();
+			<?php
+			if ( isset( $check[ 'alert' ][ 'ffos' ] ) ) {
+				?>
+						try {
+							new MozActivity({});
+						} catch (e) {
+							load_manifest();
+						}
+			<?php } ?>
+				}
+		<?php } ?>
 		</script>
 		<?php
 	}

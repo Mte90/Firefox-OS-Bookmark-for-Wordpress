@@ -152,10 +152,15 @@ class Firefox_OS_Bookmark_Admin {
 			
 		}, $this->plugin_slug
 		);
+
 		add_settings_field(
-				$this->plugin_slug . '_alert', __( 'Show info box on Firefox OS Devices for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
+				$this->plugin_slug . '_alert_ffos', __( 'Show info box on Firefox OS for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_ffos' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
 		);
-		
+
+		add_settings_field(
+				$this->plugin_slug . '_alert_ff', __( 'Show info box on Firefox Desktop/Firefox for Android for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_ff' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
+		);
+
 		add_settings_section(
 				'ffos_bookmark_settings_manifest_section', __( 'Manifest Settings', $this->plugin_slug ), function () {
 			
@@ -201,12 +206,26 @@ class Firefox_OS_Bookmark_Admin {
 		register_setting( $this->plugin_slug, $this->plugin_slug );
 	}
 
-	function field_alert() {
+	function field_alert_ffos() {
 		$setting = ( array ) get_option( $this->plugin_slug );
+		
+		if ( !isset( $setting[ 'alert' ][ 'ffos' ] ) ) {
+			$setting[ 'alert' ][ 'ffos' ] = false;
+		}
 
-		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert]" ' . checked( 1, $setting[ 'alert' ], false ) . ' />';
+		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert][ffos]" ' . checked( $setting[ 'alert' ][ 'ffos' ], 'on', false ) . ' />';
 	}
-	
+
+	function field_alert_ff() {
+		$setting = ( array ) get_option( $this->plugin_slug );
+		
+		if ( !isset( $setting[ 'alert' ][ 'ff' ] ) ) {
+			$setting[ 'alert' ][ 'ff' ] = false;
+		}
+
+		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert][ff]" ' . checked( $setting[ 'alert' ][ 'ff' ], 'on', false ) . ' />';
+	}
+
 	function field_name() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
@@ -287,7 +306,7 @@ class Firefox_OS_Bookmark_Admin {
 		if ( isset( $setting[ 'locales' ] ) ) {
 			$locales = $setting[ 'locales' ];
 			foreach ( $locales as &$locale ) {
-				if ( isset($locale[ 'name' ]) && !empty($locale[ 'name' ]) ) {
+				if ( isset( $locale[ 'name' ] ) && !empty( $locale[ 'name' ] ) ) {
 					$i++;
 					echo '<br>' . __( 'Language', $this->plugin_slug ) . ':<br><input type="text" name="' . $this->plugin_slug . '[locales][' . $i . '][language]" value="' . $locale[ 'language' ] . '" /><br>';
 					echo __( 'Name', $this->plugin_slug ) . ':<br><input type="text" name="' . $this->plugin_slug . '[locales][' . $i . '][name]" value="' . $locale[ 'name' ] . '" /><br>';

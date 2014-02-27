@@ -1,12 +1,12 @@
-=== Firefox OS Bookmark ===
-Contributors: Mte90
-Donate link: http://mte90.net
-Tags: mobile, bookmark
-Requires at least: 3.8
-Tested up to: 3.8
-Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+=== Firefox OS Bookmark ===  
+Contributors: Mte90  
+Donate link: http://mte90.net  
+Tags: mobile, bookmark  
+Requires at least: 3.8  
+Tested up to: 3.8  
+Stable tag: 1.0.0  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
 Plugin for create the manifest.webapp file for install your site as an hosted app on Firefox OS!
 
@@ -31,7 +31,7 @@ Plugin for create the manifest.webapp file for install your site as an hosted ap
 3. Click 'Install Now'
 4. Activate the plugin on the Plugin dashboard
 
-==MultiSite==
+==MultiSite==  
 To enable in the multisite you need to add this rule in the .htaccess file:
 ```
 RewriteRule manifest.webapp$ wp-content/plugins/firefox-os-bookmark/manifest.php [L]
