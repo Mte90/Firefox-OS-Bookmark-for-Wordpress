@@ -114,23 +114,17 @@ class Firefox_OS_Bookmark {
 	 */
 	public static function activate( $network_wide ) {
 
-		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+		if ( function_exists( 'is_multisite' ) && is_multisite() && $network_wide ) {
 
-			if ( $network_wide ) {
+			// Get all blog ids
+			$blog_ids = self::get_blog_ids();
 
-				// Get all blog ids
-				$blog_ids = self::get_blog_ids();
-
-				foreach ( $blog_ids as $blog_id ) {
-
-					switch_to_blog( $blog_id );
-					self::single_activate();
-				}
-
-				restore_current_blog();
-			} else {
+			foreach ( $blog_ids as $blog_id ) {
+				switch_to_blog( $blog_id );
 				self::single_activate();
 			}
+
+			restore_current_blog();
 		} else {
 			self::single_activate();
 		}
@@ -148,23 +142,17 @@ class Firefox_OS_Bookmark {
 	 */
 	public static function deactivate( $network_wide ) {
 
-		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+		if ( function_exists( 'is_multisite' ) && is_multisite() && $network_wide ) {
 
-			if ( $network_wide ) {
+			// Get all blog ids
+			$blog_ids = self::get_blog_ids();
 
-				// Get all blog ids
-				$blog_ids = self::get_blog_ids();
-
-				foreach ( $blog_ids as $blog_id ) {
-
-					switch_to_blog( $blog_id );
-					self::single_deactivate();
-				}
-
-				restore_current_blog();
-			} else {
+			foreach ( $blog_ids as $blog_id ) {
+				switch_to_blog( $blog_id );
 				self::single_deactivate();
 			}
+
+			restore_current_blog();
 		} else {
 			self::single_deactivate();
 		}
@@ -242,9 +230,14 @@ class Firefox_OS_Bookmark {
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 		load_textdomain( $domain, WP_PLUGIN_DIR . '/' . $domain . '/languages/' . $domain . '-' . $locale . '.mo' );
 	}
-
+	
+	/**
+	 * Javascript code for install the manifest
+	 * 
+	 * @since 1.0.0
+	 */
 	function inline_script() {
-		//Javascript code for install the manifest
+		
 		//Check with cookie if the alert was showed for not annoying the user
 		?>
 		<script type="text/javascript">
@@ -270,26 +263,26 @@ class Firefox_OS_Bookmark {
 			}
 		<?php
 		$check = get_option( 'firefox-os-bookmark' );
-		//Show the alert only on firefox/firefox for Android
+		//Show the alert only on FirefoxOS
+		if ( isset( $check[ 'alert' ][ 'ffos' ] ) ) {
+			?>
+				if (!!"mozApps" in navigator && navigator.userAgent.search("Mobile") != -1) {
+					load_manifest();
+				}
+			<?php
+		}
+		//Show the alert only on Firefox/Firefox for Android
 		if ( isset( $check[ 'alert' ][ 'ff' ] ) ) {
 			?>
-				if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+				if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1 && navigator.platform.toLowerCase().indexOf("android") > -1) {
 					load_manifest();
-			<?php
-			//Show the alert only on FirefoxOS
-			//TODO: better check
-			if ( isset( $check[ 'alert' ][ 'ffos' ] ) ) {
-				?>
-						try {
-							new MozActivity({});
-						} catch (e) {
-							load_manifest();
-						}
-			<?php } ?>
+				} else if (navigator.platform.toLowerCase().indexOf("firefox") > -1) {
+					load_manifest();
 				}
-		<?php } ?>
+			<?php
+		}
+		?>
 		</script>
 		<?php
 	}
-
 }

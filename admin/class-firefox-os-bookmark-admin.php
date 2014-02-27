@@ -144,7 +144,12 @@ class Firefox_OS_Bookmark_Admin {
 				), $links
 		);
 	}
-
+	
+	/**
+	 * Intiliaze all the field for the setting page.
+	 *
+	 * @since    1.0.0
+	 */
 	function ffos_bookmark_settings() {
 
 		add_settings_section(
@@ -205,27 +210,42 @@ class Firefox_OS_Bookmark_Admin {
 
 		register_setting( $this->plugin_slug, $this->plugin_slug );
 	}
-
+	
+	/**
+	 * Firefox OS Alert
+	 *
+	 * @since    1.0.0
+	 */
 	function field_alert_ffos() {
 		$setting = ( array ) get_option( $this->plugin_slug );
-		
+
 		if ( !isset( $setting[ 'alert' ][ 'ffos' ] ) ) {
 			$setting[ 'alert' ][ 'ffos' ] = false;
 		}
 
 		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert][ffos]" ' . checked( $setting[ 'alert' ][ 'ffos' ], 'on', false ) . ' />';
 	}
-
+	
+	/**
+	 * Firefox/Firefox for Android alert
+	 *
+	 * @since    1.0.0
+	 */
 	function field_alert_ff() {
 		$setting = ( array ) get_option( $this->plugin_slug );
-		
+
 		if ( !isset( $setting[ 'alert' ][ 'ff' ] ) ) {
 			$setting[ 'alert' ][ 'ff' ] = false;
 		}
 
 		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert][ff]" ' . checked( $setting[ 'alert' ][ 'ff' ], 'on', false ) . ' />';
 	}
-
+	
+	/**
+	 * Admin Name
+	 *
+	 * @since    1.0.0
+	 */
 	function field_name() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
@@ -235,7 +255,12 @@ class Firefox_OS_Bookmark_Admin {
 
 		echo '<input type="text" name="' . $this->plugin_slug . '[name]" value="' . esc_attr( $setting[ 'name' ] ) . '" />';
 	}
-
+	
+	/**
+	 * Site description
+	 *
+	 * @since    1.0.0
+	 */
 	function field_description() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
@@ -246,6 +271,11 @@ class Firefox_OS_Bookmark_Admin {
 		echo '<textarea name="' . $this->plugin_slug . '[description]">' . esc_attr( $setting[ 'description' ] ) . '</textarea>';
 	}
 
+	/**
+	 * Developer Name
+	 *
+	 * @since    1.0.0
+	 */
 	function field_developer_name() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
@@ -256,6 +286,11 @@ class Firefox_OS_Bookmark_Admin {
 		echo '<input type="text" size="60" name="' . $this->plugin_slug . '[developer][name]" value="' . esc_attr( $setting[ 'developer' ][ 'name' ] ) . '" />';
 	}
 
+	/**
+	 * Developer Url
+	 *
+	 * @since    1.0.0
+	 */
 	function field_developer_url() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
@@ -266,6 +301,11 @@ class Firefox_OS_Bookmark_Admin {
 		echo '<input type="text" size="60" name="' . $this->plugin_slug . '[developer][url]" value="' . esc_attr( $setting[ 'developer' ][ 'url' ] ) . '" />';
 	}
 
+	/**
+	 * Locale default
+	 *
+	 * @since    1.0.0
+	 */
 	function field_default_locale() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
@@ -276,6 +316,11 @@ class Firefox_OS_Bookmark_Admin {
 		echo '<input type="text" name="' . $this->plugin_slug . '[default_locale]" value="' . esc_attr( $setting[ 'default_locale' ] ) . '" />';
 	}
 
+	/**
+	 * Version
+	 *
+	 * @since    1.0.0
+	 */
 	function field_version() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
@@ -286,6 +331,11 @@ class Firefox_OS_Bookmark_Admin {
 		echo '<input type="text" name="' . $this->plugin_slug . '[version]" value="' . esc_attr( $setting[ 'version' ] ) . '" /> ' . __( 'Change if you update this page', $this->plugin_slug );
 	}
 
+	/**
+	 * Icon
+	 *
+	 * @since    1.0.0
+	 */
 	function field_icon() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 
@@ -296,10 +346,14 @@ class Firefox_OS_Bookmark_Admin {
 		echo '<div class="uploader">
 				<input type="text" name="' . $this->plugin_slug . '[icon]" value="' . esc_attr( $setting[ 'icon' ] ) . '" id="ffos-icon" />
 				<input type="button" class="button" name="_unique_name_button" id="_unique_name_button" value="' . __( 'Upload', $this->plugin_slug ) . '" />
-			  </div>
-			  ';
+			  </div>';
 	}
 
+	/**
+	 * Locales
+	 *
+	 * @since    1.0.0
+	 */
 	function field_locales() {
 		$setting = ( array ) get_option( $this->plugin_slug );
 		$i = 0;

@@ -37,9 +37,8 @@
 		<?php
 		settings_fields( $this->plugin_slug );
 		do_settings_sections( $this->plugin_slug );
+		submit_button(); 
 		?>
-
-		<?php submit_button(); ?>
 	</form>
 
 </div>
