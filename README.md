@@ -8,7 +8,8 @@ Stable tag: 1.0.0
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
-Plugin for create the manifest.webapp file for install your site as an hosted app on Firefox OS/Firefox/Firefox for Android!
+Plugin for create the manifest.webapp file for install your site as an hosted app on Firefox OS/Firefox/Firefox for Android!  
+You can add your site in the Firefox Marketplace!
 
 == Features ==
 
