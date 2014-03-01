@@ -47,6 +47,7 @@ if ( isset( $manifest[ 'icon' ] ) ) {
 		}
 	}
 }
+unset( $manifest[ 'alert' ] );
 $manifest[ 'installs_allowed_from' ] = "*";
 //Get locales info
 if ( isset( $manifest[ 'locales' ] ) ) {
