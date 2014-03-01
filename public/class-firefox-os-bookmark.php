@@ -230,14 +230,14 @@ class Firefox_OS_Bookmark {
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 		load_textdomain( $domain, WP_PLUGIN_DIR . '/' . $domain . '/languages/' . $domain . '-' . $locale . '.mo' );
 	}
-	
+
 	/**
 	 * Javascript code for install the manifest
 	 * 
 	 * @since 1.0.0
 	 */
 	function inline_script() {
-		
+
 		//Check with cookie if the alert was showed for not annoying the user
 		?>
 		<script type="text/javascript">
@@ -247,23 +247,23 @@ class Firefox_OS_Bookmark {
 					checkIfInstalled.onsuccess = function() {
 						if (!checkIfInstalled.result) {
 							var now = new Date;
-							m_app = navigator.mozApps.install('<?php echo get_bloginfo( 'url' ) ?>/manifest.webapp');
-							m_app.onsuccess(function(data) {
+							var m_app = navigator.mozApps.install('<?php echo get_bloginfo( 'url' ) ?>/manifest.webapp');
+							m_app.onsuccess = function(data) {
 								now.setDate(now.getDate() + 365);
 								document.cookie = 'appTime=false; expires=' + now.toGMTString();
-							});
-							m_app.onerror(function() {
+							};
+							m_app.onerror = function() {
 								now.setDate(now.getDate() + 30);
-								console.log("Install failed\n\n:" + installApp.error.name);
+								console.log("Install failed\n\n:" + m_app.error.name);
 								document.cookie = 'appTime=false; expires=' + now.toGMTString();
-							});
+							};
 						}
 					};
 				}
 			}
 		<?php
 		$check = get_option( 'firefox-os-bookmark' );
-		//Show the alert only on FirefoxOS
+//Show the alert only on FirefoxOS
 		if ( isset( $check[ 'alert' ][ 'ffos' ] ) ) {
 			?>
 				if (!!"mozApps" in navigator && navigator.userAgent.search("Mobile") != -1) {
@@ -271,18 +271,25 @@ class Firefox_OS_Bookmark {
 				}
 			<?php
 		}
-		//Show the alert only on Firefox/Firefox for Android
-		if ( isset( $check[ 'alert' ][ 'ff' ] ) ) {
+//Show the alert only on Firefox for Android
+		if ( isset( $check[ 'alert' ][ 'fffa' ] ) ) {
 			?>
-				if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1 && navigator.platform.toLowerCase().indexOf("android") > -1) {
-					load_manifest();
-				} else if (navigator.platform.toLowerCase().indexOf("firefox") > -1) {
-					load_manifest();
-				}
+				if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Android") > -1) {load_manifest();}
+			<?php
+		}
+//Show the alert only on Firefox
+		if ( isset( $check[ 'alert' ][ 'ff' ] ) && isset( $check[ 'alert' ][ 'fffa' ] ) ) {
+			?>
+				else if (navigator.userAgent.indexOf("Firefox") > -1) {load_manifest();}
+			<?php
+		} elseif ( isset( $check[ 'alert' ][ 'ff' ] ) ) {
+			?>
+				if (navigator.userAgent.indexOf("Firefox") > -1) {load_manifest();}
 			<?php
 		}
 		?>
 		</script>
 		<?php
 	}
+
 }
