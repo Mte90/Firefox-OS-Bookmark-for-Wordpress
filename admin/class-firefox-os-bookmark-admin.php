@@ -161,9 +161,13 @@ class Firefox_OS_Bookmark_Admin {
 		add_settings_field(
 				$this->plugin_slug . '_alert_ffos', __( 'Show info box on Firefox OS for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_ffos' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
 		);
-
+		
 		add_settings_field(
-				$this->plugin_slug . '_alert_ff', __( 'Show info box on Firefox Desktop/Firefox for Android for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_ff' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
+				$this->plugin_slug . '_alert_fffa', __( 'Show info box on Firefox for Android for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_fffa' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
+		);
+		
+		add_settings_field(
+				$this->plugin_slug . '_alert_ff', __( 'Show info box on Firefox Desktop for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_ff' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
 		);
 
 		add_settings_section(
@@ -227,7 +231,7 @@ class Firefox_OS_Bookmark_Admin {
 	}
 	
 	/**
-	 * Firefox/Firefox for Android alert
+	 * Firefox alert
 	 *
 	 * @since    1.0.0
 	 */
@@ -239,6 +243,21 @@ class Firefox_OS_Bookmark_Admin {
 		}
 
 		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert][ff]" ' . checked( $setting[ 'alert' ][ 'ff' ], 'on', false ) . ' />';
+	}
+	
+	/**
+	 * Firefox for Android alert
+	 *
+	 * @since    1.0.0
+	 */
+	function field_alert_fffa() {
+		$setting = ( array ) get_option( $this->plugin_slug );
+
+		if ( !isset( $setting[ 'alert' ][ 'fffa' ] ) ) {
+			$setting[ 'alert' ][ 'fffa' ] = false;
+		}
+
+		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert][fffa]" ' . checked( $setting[ 'alert' ][ 'fffa' ], 'on', false ) . ' />';
 	}
 	
 	/**
