@@ -8,8 +8,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
-Plugin for create the manifest.webapp file for install your site as an hosted app on Firefox OS/Firefox/Firefox for Android!  
-You can add your site in the Firefox Marketplace!
+Plugin for create the manifest.webapp file for install your site as an hosted app on Firefox OS/Firefox/Firefox for Android!
 
 == Features ==
 
@@ -33,8 +32,9 @@ You can add your site in the Firefox Marketplace!
 4. Activate the plugin on the Plugin dashboard
 
 ==MultiSite==  
-To enable in the multisite you need to add this rule in the .htaccess file:
+To enable in the multisite you need to add this rule in the .htaccess file before the string # BEGIN WordPress:
 ```
+RewriteBase /
 RewriteRule manifest.webapp$ wp-content/plugins/firefox-os-bookmark/manifest.php [L]
 ```
 
