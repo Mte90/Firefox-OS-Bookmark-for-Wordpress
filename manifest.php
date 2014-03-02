@@ -10,6 +10,33 @@
  * @copyright 2014 Mte90
  */
 define( 'WP_USE_THEMES', false );
+
+function FindWPConfig( $dirrectory ) {
+	global $confroot;
+	foreach ( glob( $dirrectory . "/*" ) as $f ) {
+		if ( basename( $f ) == 'wp-load.php' ) {
+			$confroot = str_replace( "\\", "/", dirname( $f ) );
+			return true;
+		}
+
+		if ( is_dir( $f ) ) {
+			$newdir = dirname( dirname( $f ) );
+		}
+	}
+
+	if ( isset( $newdir ) && $newdir != $dirrectory ) {
+		if ( FindWPConfig( $newdir ) ) {
+			return false;
+		}
+	}
+	return false;
+}
+
+global $confroot;
+FindWPConfig( dirname( dirname( __FILE__ ) ) );
+include_once $confroot . "/wp-load.php";
+
+
 require('../../../wp-load.php');
 
 //Get options
@@ -24,7 +51,7 @@ if ( isset( $manifest[ 'icon' ] ) ) {
 	$img = wp_get_image_editor( $clean_url );
 	unset( $manifest[ 'icon' ] );
 	$manifest[ 'icons' ] = array();
-	
+
 	//Resize the icon
 	if ( !is_wp_error( $img ) ) {
 
@@ -70,4 +97,4 @@ $manifest_ready = str_replace( '\\', '', json_encode( $manifest ) );
 header( 'Content-type: application/x-web-app-manifest+json' );
 
 //Clean and print
-echo str_replace('"installs_allowed_from":"*"','"installs_allowed_from":["*"]',$manifest_ready);
+echo str_replace( '"installs_allowed_from":"*"', '"installs_allowed_from":["*"]', $manifest_ready );
