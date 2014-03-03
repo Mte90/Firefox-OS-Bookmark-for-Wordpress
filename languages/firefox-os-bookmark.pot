@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/firefox-os-bookmark\n"
-"POT-Creation-Date: 2014-03-01 18:40+0100\n"
-"PO-Revision-Date: 2014-03-01 18:41+0100\n"
+"POT-Creation-Date: 2014-03-03 18:55+0100\n"
+"PO-Revision-Date: 2014-03-03 18:56+0100\n"
 "Last-Translator: Mte90 <mte90net@gmail.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
 "Language: en_US\n"
@@ -118,10 +118,6 @@ msgstr ""
 msgid "The permalink are required for use this plugin."
 msgstr ""
 
-#: admin/views/admin.php:30
-msgid "Add the htaccess rule written in the readme in the multisite section."
-msgstr ""
-
-#: admin/views/admin.php:36
+#: admin/views/admin.php:25
 msgid "Manifest path"
 msgstr ""

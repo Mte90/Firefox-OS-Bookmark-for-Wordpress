@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/plugin-name\n"
-"POT-Creation-Date: 2014-03-01 18:41+0100\n"
-"PO-Revision-Date: 2014-03-01 18:42+0100\n"
+"POT-Creation-Date: 2014-03-03 18:56+0100\n"
+"PO-Revision-Date: 2014-03-03 18:56+0100\n"
 "Last-Translator: FULL NAME <email@example.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
 "Language: en_US\n"
@@ -36,7 +36,7 @@ msgid ""
 "Show info box on Firefox OS for ask to install the app (30 days for show "
 "again the box)"
 msgstr ""
-"Mostra una finestra su  Firefox OS per chiedere di installare l'applicazione "
+"Mostra una finestra su Firefox OS per chiedere di installare l'applicazione "
 "(verrà mostrato ogni 30 giorni)"
 
 #: admin/class-firefox-os-bookmark-admin.php:166
@@ -44,7 +44,7 @@ msgid ""
 "Show info box on Firefox for Android for ask to install the app (30 days for "
 "show again the box)"
 msgstr ""
-"Mostra una finestra su  Firefox for Android per chiedere di installare "
+"Mostra una finestra su Firefox for Android per chiedere di installare "
 "l'applicazione (verrà mostrato ogni 30 giorni)"
 
 #: admin/class-firefox-os-bookmark-admin.php:170
@@ -124,14 +124,14 @@ msgstr "Aggiungi una nuova lingua"
 msgid "The permalink are required for use this plugin."
 msgstr "I permalink abilitati sono richiesti dal plugin."
 
-#: admin/views/admin.php:30
-msgid "Add the htaccess rule written in the readme in the multisite section."
-msgstr ""
-"Aggiungi la regola htaccess presente nel readme nella sezione multisite"
-
-#: admin/views/admin.php:36
+#: admin/views/admin.php:25
 msgid "Manifest path"
 msgstr "Percorso Manifest"
+
+#~ msgid ""
+#~ "Add the htaccess rule written in the readme in the multisite section."
+#~ msgstr ""
+#~ "Aggiungi la regola htaccess presente nel readme nella sezione multisite"
 
 #~ msgid "The 404 error it's normal because the mime type it's not recognized"
 #~ msgstr ""
