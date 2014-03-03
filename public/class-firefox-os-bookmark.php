@@ -75,7 +75,7 @@ class Firefox_OS_Bookmark {
 		}
 		//Add fake page for the manifest
 		add_filter( 'the_posts', array( $this, 'fakepage_manifest' ), -10 );
-		add_action('template_redirect', array( $this, 'fakepage_manifest_render' ));
+		add_action( 'template_redirect', array( $this, 'fakepage_manifest_render' ) );
 	}
 
 	/**
@@ -300,66 +300,70 @@ class Firefox_OS_Bookmark {
 	}
 
 	function fakepage_manifest_render() {
-		//Get options
-		$manifest = ( array ) get_option( 'firefox-os-bookmark' );
+		global $wp;
+		
+		if ( (strtolower( $wp->request ) == "manifest.webapp") ) {
+			//Get options
+			$manifest = ( array ) get_option( 'firefox-os-bookmark' );
 
 //Execute the resize
-		if ( isset( $manifest[ 'icon' ] ) ) {
-			//Local path
-			$clean_url = ABSPATH . str_replace( get_bloginfo( 'url' ), '', $manifest[ 'icon' ] );
-			//Absolute url for icon
-			$url = parse_url( dirname( $manifest[ 'icon' ] ) );
-			$img = wp_get_image_editor( $clean_url );
-			unset( $manifest[ 'icon' ] );
-			$manifest[ 'icons' ] = array();
+			if ( isset( $manifest[ 'icon' ] ) ) {
+				//Local path
+				$clean_url = ABSPATH . str_replace( get_bloginfo( 'url' ), '', $manifest[ 'icon' ] );
+				//Absolute url for icon
+				$url = parse_url( dirname( $manifest[ 'icon' ] ) );
+				$img = wp_get_image_editor( $clean_url );
+				unset( $manifest[ 'icon' ] );
+				$manifest[ 'icons' ] = array();
 
-			//Resize the icon
-			if ( !is_wp_error( $img ) ) {
+				//Resize the icon
+				if ( !is_wp_error( $img ) ) {
 
-				$sizes_array = array(
-					array( 'width' => 16, 'height' => 16, 'crop' => true ),
-					array( 'width' => 32, 'height' => 32, 'crop' => true ),
-					array( 'width' => 48, 'height' => 48, 'crop' => true ),
-					array( 'width' => 60, 'height' => 60, 'crop' => true ),
-					array( 'width' => 64, 'height' => 64, 'crop' => true ),
-					array( 'width' => 90, 'height' => 90, 'crop' => true ),
-					array( 'width' => 120, 'height' => 120, 'crop' => true ),
-					array( 'width' => 128, 'height' => 128, 'crop' => true ),
-					array( 'width' => 256, 'height' => 256, 'crop' => true ),
-				);
+					$sizes_array = array(
+						array( 'width' => 16, 'height' => 16, 'crop' => true ),
+						array( 'width' => 32, 'height' => 32, 'crop' => true ),
+						array( 'width' => 48, 'height' => 48, 'crop' => true ),
+						array( 'width' => 60, 'height' => 60, 'crop' => true ),
+						array( 'width' => 64, 'height' => 64, 'crop' => true ),
+						array( 'width' => 90, 'height' => 90, 'crop' => true ),
+						array( 'width' => 120, 'height' => 120, 'crop' => true ),
+						array( 'width' => 128, 'height' => 128, 'crop' => true ),
+						array( 'width' => 256, 'height' => 256, 'crop' => true ),
+					);
 
-				$resize = $img->multi_resize( $sizes_array );
+					$resize = $img->multi_resize( $sizes_array );
 
-				foreach ( $resize as $row ) {
-					$manifest[ 'icons' ][ $row[ 'width' ] ] = $url[ 'path' ] . '/' . $row[ 'file' ];
+					foreach ( $resize as $row ) {
+						$manifest[ 'icons' ][ $row[ 'width' ] ] = $url[ 'path' ] . '/' . $row[ 'file' ];
+					}
 				}
 			}
-		}
-		unset( $manifest[ 'alert' ] );
-		$manifest[ 'installs_allowed_from' ] = "*";
+			unset( $manifest[ 'alert' ] );
+			$manifest[ 'installs_allowed_from' ] = "*";
 //Get locales info
-		if ( isset( $manifest[ 'locales' ] ) ) {
-			$locales = $manifest[ 'locales' ];
-			unset( $manifest[ 'locales' ] );
-			$locales_clean = array();
-			foreach ( $locales as $value ) {
-				$locales_clean[ $value[ 'language' ] ] = array( 'name' => $value[ 'name' ], 'description' => $value[ 'description' ] );
+			if ( isset( $manifest[ 'locales' ] ) ) {
+				$locales = $manifest[ 'locales' ];
+				unset( $manifest[ 'locales' ] );
+				$locales_clean = array();
+				foreach ( $locales as $value ) {
+					$locales_clean[ $value[ 'language' ] ] = array( 'name' => $value[ 'name' ], 'description' => $value[ 'description' ] );
+				}
+				$manifest[ 'locales' ] = $locales_clean;
 			}
-			$manifest[ 'locales' ] = $locales_clean;
-		}
 
 //Replace the "
-		$manifest[ 'developer' ][ 'name' ] = str_replace( '"', "'", $manifest[ 'developer' ][ 'name' ] );
+			$manifest[ 'developer' ][ 'name' ] = str_replace( '"', "'", $manifest[ 'developer' ][ 'name' ] );
 
 //Clean JSON
-		$manifest_ready = str_replace( '\\', '', json_encode( $manifest ) );
+			$manifest_ready = str_replace( '\\', '', json_encode( $manifest ) );
 
 //Set the mime type
-header( 'Content-type: application/x-web-app-manifest+json' );
+			header( 'Content-type: application/x-web-app-manifest+json' );
 //Clean and print
-		echo str_replace( '"installs_allowed_from":"*"', '"installs_allowed_from":["*"]', $manifest_ready );
-		//Kill the execution of the template
-		exit();
+			echo str_replace( '"installs_allowed_from":"*"', '"installs_allowed_from":["*"]', $manifest_ready );
+			//Kill the execution of the template
+			exit();
+		}
 	}
 
 }
