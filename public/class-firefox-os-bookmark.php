@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name.
  *
@@ -69,8 +70,8 @@ class Firefox_OS_Bookmark {
 
 		// Load public-facing JavaScript after check the settings
 		$check = get_option( 'firefox-os-bookmark' );
-		if ( isset( $check[ 'alert' ][ 'ff' ] ) or isset( $check[ 'alert' ][ 'ffos' ] ) ) {
-			add_action( 'wp_head', array( $this, 'inline_script' ) );
+		if ( isset( $check[ 'alert' ][ 'ff' ] ) or isset( $check[ 'alert' ][ 'fffa' ] ) or isset( $check[ 'alert' ][ 'ffos' ] ) ) {
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 	}
 
@@ -232,64 +233,28 @@ class Firefox_OS_Bookmark {
 	}
 
 	/**
-	 * Javascript code for install the manifest
-	 * 
+	 * Register and enqueues public-facing JavaScript files.
+	 *
 	 * @since 1.0.0
 	 */
-	function inline_script() {
-
-		//Check with cookie if the alert was showed for not annoying the user
-		?>
-		<script type="text/javascript">
-			function load_manifest() {
-				if (document.cookie.replace(/(?:(?:^|.*;\s*)appTime\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "false") {
-					var checkIfInstalled = navigator.mozApps.getSelf();
-					checkIfInstalled.onsuccess = function() {
-						if (!checkIfInstalled.result) {
-							var now = new Date;
-							var m_app = navigator.mozApps.install('<?php echo get_bloginfo( 'url' ) ?>/manifest.webapp');
-							m_app.onsuccess = function(data) {
-								now.setDate(now.getDate() + 365);
-								document.cookie = 'appTime=false; expires=' + now.toGMTString();
-							};
-							m_app.onerror = function() {
-								now.setDate(now.getDate() + 30);
-								console.log("Install failed\n\n:" + m_app.error.name);
-								document.cookie = 'appTime=false; expires=' + now.toGMTString();
-							};
-						}
-					};
-				}
-			}
-		<?php
+	public function enqueue_scripts() {
 		$check = get_option( 'firefox-os-bookmark' );
-//Show the alert only on FirefoxOS
+		$ffos_bookmark = array();
+		/* Show the alert only on FirefoxOS */
 		if ( isset( $check[ 'alert' ][ 'ffos' ] ) ) {
-			?>
-				if (!!"mozApps" in navigator && navigator.userAgent.search("Mobile") != -1) {
-					load_manifest();
-				}
-			<?php
+			$ffos_bookmark[ 'ffos' ] = true;
 		}
-//Show the alert only on Firefox for Android
+		/* Show the alert only on Firefox for Android */
 		if ( isset( $check[ 'alert' ][ 'fffa' ] ) ) {
-			?>
-				if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Android") > -1) {load_manifest();}
-			<?php
+			$ffos_bookmark[ 'fffa' ] = true;
 		}
-//Show the alert only on Firefox
-		if ( isset( $check[ 'alert' ][ 'ff' ] ) && isset( $check[ 'alert' ][ 'fffa' ] ) ) {
-			?>
-				else if (navigator.userAgent.indexOf("Firefox") > -1) {load_manifest();}
-			<?php
-		} elseif ( isset( $check[ 'alert' ][ 'ff' ] ) ) {
-			?>
-				if (navigator.userAgent.indexOf("Firefox") > -1) {load_manifest();}
-			<?php
+		/* Show the alert only on Firefox */
+		if ( isset( $check[ 'alert' ][ 'ff' ] ) ) {
+			$ffos_bookmark[ 'ff' ] = true;
 		}
-		?>
-		</script>
-		<?php
+		$ffos_bookmark[ 'host' ] = get_bloginfo('url');
+		wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'assets/js/public.js', __FILE__ ), null, self::VERSION );
+		wp_localize_script( $this->plugin_slug . '-plugin-script', 'ffos_bookmark', $ffos_bookmark );
 	}
 
 }
