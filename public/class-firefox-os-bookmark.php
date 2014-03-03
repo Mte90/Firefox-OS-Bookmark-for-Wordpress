@@ -73,6 +73,9 @@ class Firefox_OS_Bookmark {
 		if ( isset( $check[ 'alert' ][ 'ff' ] ) or isset( $check[ 'alert' ][ 'fffa' ] ) or isset( $check[ 'alert' ][ 'ffos' ] ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
+		//Add fake page for the manifest
+		add_filter( 'the_posts', array( $this, 'fakepage_manifest' ), -10 );
+		add_action('template_redirect', array( $this, 'fakepage_manifest_render' ));
 	}
 
 	/**
@@ -207,8 +210,8 @@ class Firefox_OS_Bookmark {
 	private static function single_activate() {
 		//Insert the redirect
 		//Some times this rules not work but the htaccess rule in the readme fix the problem
-		$plugin_url = plugins_url() . '/firefox-os-bookmark/manifest.php';
-		add_rewrite_rule( 'manifest\.webapp$', $plugin_url, 'top' );
+		/* $plugin_url = plugins_url() . '/firefox-os-bookmark/manifest.php';
+		  add_rewrite_rule( 'manifest\.webapp$', $plugin_url, 'top' ); */
 		flush_rewrite_rules();
 	}
 
@@ -252,9 +255,111 @@ class Firefox_OS_Bookmark {
 		if ( isset( $check[ 'alert' ][ 'ff' ] ) ) {
 			$ffos_bookmark[ 'ff' ] = true;
 		}
-		$ffos_bookmark[ 'host' ] = get_bloginfo('url');
+		$ffos_bookmark[ 'host' ] = get_bloginfo( 'url' );
 		wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'assets/js/public.js', __FILE__ ), null, self::VERSION );
 		wp_localize_script( $this->plugin_slug . '-plugin-script', 'ffos_bookmark', $ffos_bookmark );
+	}
+
+	function fakepage_manifest( $posts ) {
+		global $wp;
+		global $wp_query;
+
+		global $fakepage_manifest; // used to stop double loading
+		$fakepage_manifest_url = "manifest.webapp"; // URL of the fake page
+		if ( !$fakepage_manifest && (strtolower( $wp->request ) == $fakepage_manifest_url) ) {
+// stop interferring with other $posts arrays on this page (only works if the sidebar is rendered *after* the main page)
+			$fakepage_manifest = true;
+// create a fake virtual page
+			$post = new stdClass;
+			$post->post_author = 1;
+			$post->post_name = $fakepage_manifest_url;
+			$post->guid = get_bloginfo( 'wpurl' ) . '/' . $fakepage_manifest_url;
+			$post->post_title = "manifest.webapp";
+			$post->post_content = '';
+			$post->ID = -999;
+			$post->post_type = 'page';
+			$post->post_status = 'static';
+			$post->comment_status = 'closed';
+			$post->ping_status = 'open';
+			$post->comment_count = 0;
+			$post->post_date = current_time( 'mysql' );
+			$post->post_date_gmt = current_time( 'mysql', 1 );
+			$posts = NULL;
+			$posts[] = $post;
+// make wpQuery believe this is a real page too
+			$wp_query->is_page = true;
+			$wp_query->is_singular = true;
+			$wp_query->is_home = false;
+			$wp_query->is_archive = false;
+			$wp_query->is_category = false;
+			unset( $wp_query->query[ "error" ] );
+			$wp_query->query_vars[ "error" ] = "";
+			$wp_query->is_404 = false;
+		}
+		return $posts;
+	}
+
+	function fakepage_manifest_render() {
+		//Get options
+		$manifest = ( array ) get_option( 'firefox-os-bookmark' );
+
+//Execute the resize
+		if ( isset( $manifest[ 'icon' ] ) ) {
+			//Local path
+			$clean_url = ABSPATH . str_replace( get_bloginfo( 'url' ), '', $manifest[ 'icon' ] );
+			//Absolute url for icon
+			$url = parse_url( dirname( $manifest[ 'icon' ] ) );
+			$img = wp_get_image_editor( $clean_url );
+			unset( $manifest[ 'icon' ] );
+			$manifest[ 'icons' ] = array();
+
+			//Resize the icon
+			if ( !is_wp_error( $img ) ) {
+
+				$sizes_array = array(
+					array( 'width' => 16, 'height' => 16, 'crop' => true ),
+					array( 'width' => 32, 'height' => 32, 'crop' => true ),
+					array( 'width' => 48, 'height' => 48, 'crop' => true ),
+					array( 'width' => 60, 'height' => 60, 'crop' => true ),
+					array( 'width' => 64, 'height' => 64, 'crop' => true ),
+					array( 'width' => 90, 'height' => 90, 'crop' => true ),
+					array( 'width' => 120, 'height' => 120, 'crop' => true ),
+					array( 'width' => 128, 'height' => 128, 'crop' => true ),
+					array( 'width' => 256, 'height' => 256, 'crop' => true ),
+				);
+
+				$resize = $img->multi_resize( $sizes_array );
+
+				foreach ( $resize as $row ) {
+					$manifest[ 'icons' ][ $row[ 'width' ] ] = $url[ 'path' ] . '/' . $row[ 'file' ];
+				}
+			}
+		}
+		unset( $manifest[ 'alert' ] );
+		$manifest[ 'installs_allowed_from' ] = "*";
+//Get locales info
+		if ( isset( $manifest[ 'locales' ] ) ) {
+			$locales = $manifest[ 'locales' ];
+			unset( $manifest[ 'locales' ] );
+			$locales_clean = array();
+			foreach ( $locales as $key => $value ) {
+				$locales_clean[ $value[ 'language' ] ] = array( 'name' => $value[ 'name' ], 'description' => $value[ 'description' ] );
+			}
+			$manifest[ 'locales' ] = $locales_clean;
+		}
+
+//Replace the "
+		$manifest[ 'developer' ][ 'name' ] = str_replace( '"', "'", $manifest[ 'developer' ][ 'name' ] );
+
+//Clean JSON
+		$manifest_ready = str_replace( '\\', '', json_encode( $manifest ) );
+
+//Set the mime type
+header( 'Content-type: application/x-web-app-manifest+json' );
+//Clean and print
+		echo str_replace( '"installs_allowed_from":"*"', '"installs_allowed_from":["*"]', $manifest_ready );
+		//Kill the execution of the template
+		exit();
 	}
 
 }

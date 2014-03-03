@@ -31,13 +31,6 @@ Plugin for create the manifest.webapp file for install your site as an hosted ap
 3. Click 'Install Now'
 4. Activate the plugin on the Plugin dashboard
 
-==MultiSite==  
-To enable in the multisite you need to add this rule in the .htaccess file before the string # BEGIN WordPress:
-```
-RewriteBase /
-RewriteRule manifest.webapp$ wp-content/plugins/firefox-os-bookmark/manifest.php [L]
-```
-
 == Changelog ==
 
 = 1.0 =
