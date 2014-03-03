@@ -21,17 +21,6 @@
 		echo '<div class="error"><p>' . __( 'The permalink are required for use this plugin.', $this->plugin_slug ) . '</p></div>';
 	}
 	?>
-	<script>
-		jQuery.ajax({
-			url: '<?php echo get_bloginfo( 'url' ) ?>/manifest.webapp',
-			contentType: 'application/x-web-app-manifest+json',
-			error: function(XMLHttpRequest, textStatus, errorThrown) {
-				if (typeof XMLHttpRequest.responseJSON == 'undefined') {
-					jQuery('form').prepend('<div class="error"><p><?php _e( 'Add the htaccess rule written in the readme in the multisite section.', $this->plugin_slug ) ?></p></div>');
-				}
-			}
-		});
-	</script>
 	<form action="options.php" method="post">
 		<?php _e( 'Manifest path', $this->plugin_slug ) ?>: <?php echo get_bloginfo( 'url' ) ?>/manifest.webapp
 		<?php

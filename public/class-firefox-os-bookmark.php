@@ -342,7 +342,7 @@ class Firefox_OS_Bookmark {
 			$locales = $manifest[ 'locales' ];
 			unset( $manifest[ 'locales' ] );
 			$locales_clean = array();
-			foreach ( $locales as $key => $value ) {
+			foreach ( $locales as $value ) {
 				$locales_clean[ $value[ 'language' ] ] = array( 'name' => $value[ 'name' ], 'description' => $value[ 'description' ] );
 			}
 			$manifest[ 'locales' ] = $locales_clean;
