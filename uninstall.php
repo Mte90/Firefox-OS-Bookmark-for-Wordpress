@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Fired when the plugin is uninstalled.
  *
@@ -8,10 +9,9 @@
  * @link      
  * @copyright 2014 Mte90
  */
-
 // If uninstall not called from WordPress, then exit
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-delete_option( $this->plugin_slug );
+delete_option( 'firefox-os-bookmark' );
