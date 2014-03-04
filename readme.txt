@@ -32,6 +32,16 @@ The minimum size for a site for the Firefox OS devices is 320x480!
 3. Click 'Install Now'
 4. Activate the plugin on the Plugin dashboard
 
+== Screenshots ==
+
+1. Config page
+2. Firefox Os screen
+3. Firefox Os screen
+4. Firefox Os screen
+5. Firefox for Android screen 
+6. Firefox for Android screen 
+7. Firefox for Android screen 
+
 == Changelog ==
 
 = 1.0 =
