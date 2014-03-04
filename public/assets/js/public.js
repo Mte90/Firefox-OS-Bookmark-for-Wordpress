@@ -22,43 +22,27 @@ function load_manifest() {
 
 //Based on 
 //https://github.com/digitarald/chromeless-external-links-snippet/
-(function(body) {
+document.addEventListener("DOMContentLoaded", function() {
 // Only enable for chromeless window
   if (locationbar.visible) {
     if (parseInt(ffos_bookmark.ffos) === 1 && !!"mozApps" in navigator && navigator.userAgent.indexOf("Mobile") > -1) {
       load_manifest();
-    }else if (parseInt(ffos_bookmark.fffa) === 1 && navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Android") > -1) {
+    } else if (parseInt(ffos_bookmark.fffa) === 1 && navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Android") > -1) {
       load_manifest();
-    }else if (parseInt(ffos_bookmark.ff) === 1 && navigator.userAgent.indexOf("Firefox") > -1) {
+    } else if (parseInt(ffos_bookmark.ff) === 1 && navigator.userAgent.indexOf("Firefox") > -1) {
       load_manifest();
     }
     return;
   }
 
-// Shim matchesSelector
-  var matches = body.matchesSelector || body.mozMatchesSelector;
-
-// Seelctor matches external links, but allows https/http switching
+// Selector matches external links, but allows https/http switching
   var selector = "a[href^='http']:not([href*='://" + location.host + "']):not([target='_blank'])";
 
-// Click event handler
-  var handleClickEvent = function(evt) {
-// All the way up
-    var element = evt.target;
-    while (element && element !== body) {
-// Only external links allowed
-      if (matches.call(element, selector)) {
-// Add target when no named target given
-        var target = element.getAttribute('target');
-        if (!target || target.substr(0, 1) === '_') {
-          element.setAttribute('target', '_blank');
-        }
-        return;
-      }
-      element = element.parentNode;
+  Array.prototype.forEach.call(document.querySelectorAll(selector), function(el) {
+    var target = el.getAttribute('target');
+    if (!target || target.substr(0, 1) === '_') {
+      el.setAttribute('target', '_blank');
     }
-  };
+  });
 
-// Delegate all clicks on document body
-  body.addEventListener('click', handleClickEvent, false);
-})(document.body);
+});
