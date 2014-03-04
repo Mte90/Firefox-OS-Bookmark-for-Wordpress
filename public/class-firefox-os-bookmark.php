@@ -354,6 +354,9 @@ class Firefox_OS_Bookmark {
 //Replace the "
 			$manifest[ 'developer' ][ 'name' ] = str_replace( '"', "'", $manifest[ 'developer' ][ 'name' ] );
 			$relative_path = parse_url(get_bloginfo('url'));
+			if(empty($relative_path['path'])) {
+				$relative_path['path'] = "/";
+			}
 			$manifest['launch_path'] = $relative_path['path'];
 //Clean JSON
 			$manifest_ready = str_replace( '\\', '', json_encode( $manifest ) );
