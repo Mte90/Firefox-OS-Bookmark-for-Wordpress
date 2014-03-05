@@ -11,6 +11,12 @@
  * @link      
  * @copyright 2014 Mte90
  */
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 ?>
 
 <div class="wrap">

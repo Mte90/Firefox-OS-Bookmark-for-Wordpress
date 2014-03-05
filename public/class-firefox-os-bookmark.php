@@ -10,6 +10,11 @@
  * @copyright 2014 Mte90
  */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 /**
  * Plugin class. This class should ideally be used to work with the
  * public-facing side of the WordPress site.
