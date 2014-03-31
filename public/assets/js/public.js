@@ -35,14 +35,19 @@ document.addEventListener("DOMContentLoaded", function() {
     return;
   }
 
-// Selector matches external links, but allows https/http switching
-  var selector = "a[href^='http']:not([href*='://" + location.host + "']):not([target='_blank'])";
-
-  Array.prototype.forEach.call(document.querySelectorAll(selector), function(el) {
-    var target = el.getAttribute('target');
+// Click event handler
+  var handleClickEvent = function(evt) {
+// Only external links allowed
+// Add target when no named target given
+    var target = evt.target.getAttribute('target');
     if (!target || target.substr(0, 1) === '_') {
-      el.setAttribute('target', '_blank');
+      evt.target.setAttribute('target', '_blank');
     }
-  });
-
+  };
+// Delegate all clicks on document body
+// Selector matches external links, but allows https/http switching
+  var _link = document.querySelectorAll("a[href^='http']:not([href*='://" + location.host + "']):not([target='_blank'])");
+  for (var _i = 0; _i < _link.length; _i++) {
+    _link[_i].addEventListener('click', handleClickEvent, false);
+  }
 });
