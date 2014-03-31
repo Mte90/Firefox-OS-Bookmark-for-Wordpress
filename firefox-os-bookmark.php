@@ -6,7 +6,7 @@
  * @package   Firefox_OS_Bookmark
  * @author    Mte90 <mte90net@gmail.com>
  * @license   GPL-2.0+
- * @link      
+ * @link      http://www.mte90.net
  * @copyright 2014 Mte90
  *
  * @wordpress-plugin

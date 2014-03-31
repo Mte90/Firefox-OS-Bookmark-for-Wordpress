@@ -7,21 +7,18 @@
  * @package   Firefox_OS_Bookmark_Admin
  * @author    Mte90 <mte90net@gmail.com>
  * @license   GPL-2.0+
- * @link      
+ * @link      http://www.mte90.net
  * @copyright 2014 Mte90
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if ( !defined( 'WPINC' ) ) {
 	die;
 }
 
 /**
  * Plugin class. This class should ideally be used to work with the
  * administrative side of the WordPress site.
- *
- * If you're interested in introducing public-facing
- * functionality, then refer to `class-firefox-os-bookmark.php`
  *
  * @package Firefox_OS_Bookmark_Admin
  * @author  Mte90 <mte90net@gmail.com>
@@ -149,7 +146,7 @@ class Firefox_OS_Bookmark_Admin {
 				), $links
 		);
 	}
-	
+
 	/**
 	 * Intiliaze all the field for the setting page.
 	 *
@@ -166,11 +163,11 @@ class Firefox_OS_Bookmark_Admin {
 		add_settings_field(
 				$this->plugin_slug . '_alert_ffos', __( 'Show info box on Firefox OS for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_ffos' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
 		);
-		
+
 		add_settings_field(
 				$this->plugin_slug . '_alert_fffa', __( 'Show info box on Firefox for Android for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_fffa' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
 		);
-		
+
 		add_settings_field(
 				$this->plugin_slug . '_alert_ff', __( 'Show info box on Firefox Desktop for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_ff' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
 		);
@@ -219,7 +216,7 @@ class Firefox_OS_Bookmark_Admin {
 
 		register_setting( $this->plugin_slug, $this->plugin_slug );
 	}
-	
+
 	/**
 	 * Firefox OS Alert
 	 *
@@ -234,7 +231,7 @@ class Firefox_OS_Bookmark_Admin {
 
 		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert][ffos]" ' . checked( $setting[ 'alert' ][ 'ffos' ], 'on', false ) . ' />';
 	}
-	
+
 	/**
 	 * Firefox alert
 	 *
@@ -249,7 +246,7 @@ class Firefox_OS_Bookmark_Admin {
 
 		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert][ff]" ' . checked( $setting[ 'alert' ][ 'ff' ], 'on', false ) . ' />';
 	}
-	
+
 	/**
 	 * Firefox for Android alert
 	 *
@@ -264,7 +261,7 @@ class Firefox_OS_Bookmark_Admin {
 
 		echo '<input type="checkbox" name="' . $this->plugin_slug . '[alert][fffa]" ' . checked( $setting[ 'alert' ][ 'fffa' ], 'on', false ) . ' />';
 	}
-	
+
 	/**
 	 * Admin Name
 	 *
@@ -279,7 +276,7 @@ class Firefox_OS_Bookmark_Admin {
 
 		echo '<input type="text" name="' . $this->plugin_slug . '[name]" value="' . esc_attr( $setting[ 'name' ] ) . '" />';
 	}
-	
+
 	/**
 	 * Site description
 	 *

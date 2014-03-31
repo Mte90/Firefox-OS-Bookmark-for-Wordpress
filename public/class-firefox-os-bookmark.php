@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Plugin Name.
+ * Firefox OS Bookmark
  *
  * @package   Firefox_OS_Bookmark
  * @author    Mte90 <mte90net@gmail.com>
  * @license   GPL-2.0+
- * @link      
+ * @link      http://www.mte90.net
  * @copyright 2014 Mte90
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if ( !defined( 'WPINC' ) ) {
 	die;
 }
 
@@ -19,11 +19,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Plugin class. This class should ideally be used to work with the
  * public-facing side of the WordPress site.
  *
- * If you're interested in introducing administrative or dashboard
- * functionality, then refer to `class-firefox-os-bookmark-admin.php`
- *
  * @package Firefox_OS_Bookmark
- * @author  Your Name <email@example.com>
+ * @author  Mte90 <mte90net@gmail.com>
  */
 class Firefox_OS_Bookmark {
 
@@ -34,7 +31,7 @@ class Firefox_OS_Bookmark {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.0.1';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -66,7 +63,6 @@ class Firefox_OS_Bookmark {
 	 * @since     1.0.0
 	 */
 	private function __construct() {
-
 		// Load plugin text domain
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
@@ -306,8 +302,8 @@ class Firefox_OS_Bookmark {
 
 	function fakepage_manifest_render() {
 		global $wp;
-		
-		if ( (strtolower( $wp->request ) == "manifest.webapp") ) {
+
+		if ( (strtolower( $wp->request ) == "manifest.webapp" ) ) {
 			//Get options
 			$manifest = ( array ) get_option( 'firefox-os-bookmark' );
 
@@ -358,11 +354,11 @@ class Firefox_OS_Bookmark {
 
 //Replace the "
 			$manifest[ 'developer' ][ 'name' ] = str_replace( '"', "'", $manifest[ 'developer' ][ 'name' ] );
-			$relative_path = parse_url(get_bloginfo('url'));
-			if(empty($relative_path['path'])) {
-				$relative_path['path'] = "/";
+			$relative_path = parse_url( get_bloginfo( 'url' ) );
+			if ( empty( $relative_path[ 'path' ] ) ) {
+				$relative_path[ 'path' ] = "/";
 			}
-			$manifest['launch_path'] = $relative_path['path'];
+			$manifest[ 'launch_path' ] = $relative_path[ 'path' ];
 //Clean JSON
 			$manifest_ready = str_replace( '\\', '', json_encode( $manifest ) );
 
