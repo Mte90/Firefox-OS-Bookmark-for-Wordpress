@@ -17,7 +17,7 @@ The minimum size for a site for the Firefox OS devices is 320x480!
 
 Demo: [Mte90.Net](http://mte90.net)
 
-Firefox Marketplace: Awaiting the approval
+Firefox Marketplace: [https://marketplace.firefox.com/app/mte90net](https://marketplace.firefox.com/app/mte90net)
 
 = Features =
 
@@ -25,7 +25,7 @@ Firefox Marketplace: Awaiting the approval
 * Icons support
 * MultiSite support
 * Manifest support for multilanguage
-* Popup installation (settings)
+* Native Popup installation (settings)
 
 = Upload on Firefox Marketplace =
 
@@ -62,7 +62,9 @@ Firefox Marketplace: Awaiting the approval
 
 = 1.0.1 =
 * Better readme
-* Fix for not include the plugin file by other script
+* Added link to the example app in the Firefox Marketplace (yes now are approved!)
+* [Fix] Not include the plugin file by other scripts
+* [Enhancement] New code for insert the target attribute on extern links
 
 = 1.0 =
 * First Release
