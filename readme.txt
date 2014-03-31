@@ -19,6 +19,8 @@ Demo: [Mte90.Net](http://mte90.net)
 
 Firefox Marketplace: [https://marketplace.firefox.com/app/mte90net](https://marketplace.firefox.com/app/mte90net)
 
+Github: [https://github.com/Mte90/Firefox-OS-Bookmark-for-Wordpress](https://github.com/Mte90/Firefox-OS-Bookmark-for-Wordpress)
+
 = Features =
 
 * Basic manifest.webapp (domain.tld/manifest.webapp) file
