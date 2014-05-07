@@ -159,17 +159,17 @@ class Firefox_OS_Bookmark_Admin {
 			
 		}, $this->plugin_slug
 		);
-
 		add_settings_field(
 				$this->plugin_slug . '_alert_ffos', __( 'Show info box on Firefox OS for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_ffos' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
 		);
-
 		add_settings_field(
 				$this->plugin_slug . '_alert_fffa', __( 'Show info box on Firefox for Android for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_fffa' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
 		);
-
 		add_settings_field(
 				$this->plugin_slug . '_alert_ff', __( 'Show info box on Firefox Desktop for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_ff' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
+		);
+		add_settings_field(
+				$this->plugin_slug . '_modal_content', __( 'Text of the installation window', $this->plugin_slug ), array( $this, 'field_modal_content' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
 		);
 
 		add_settings_section(
@@ -390,6 +390,21 @@ class Firefox_OS_Bookmark_Admin {
 			}
 		}
 		echo '<br><a href="#" id="new_language" data-name="' . __( 'Name', $this->plugin_slug ) . '" data-language="' . __( 'Language', $this->plugin_slug ) . '" data-description="' . __( 'Description', $this->plugin_slug ) . '" data-number="' . ($i + 1) . '">' . __( 'Add new language', $this->plugin_slug ) . '</a><br>';
+	}
+	
+	/**
+	 * Modal Content
+	 *
+	 * @since    1.1.0
+	 */
+	function field_modal_content() {
+		$setting = ( array ) get_option( $this->plugin_slug );
+
+		if ( !isset( $setting[ 'modal_content' ] ) ) {
+			$setting[ 'modal_content' ] = __( 'Do you want to install this site as an application on your system with Firefox/Firefox for Android/Firefox OS?', $this->plugin_slug );
+		}
+
+		echo '<textarea name="' . $this->plugin_slug . '[modal_content]">' . esc_attr( $setting[ 'modal_content' ] ) . '</textarea>';
 	}
 
 }

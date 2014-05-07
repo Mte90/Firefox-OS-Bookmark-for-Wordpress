@@ -9,7 +9,6 @@
  * @link      http://www.mte90.net
  * @copyright 2014 Mte90
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
@@ -210,9 +209,6 @@ class Firefox_OS_Bookmark {
 	 */
 	private static function single_activate() {
 		//Insert the redirect
-		//Some times this rules not work but the htaccess rule in the readme fix the problem
-		/* $plugin_url = plugins_url() . '/firefox-os-bookmark/manifest.php';
-		  add_rewrite_rule( 'manifest\.webapp$', $plugin_url, 'top' ); */
 		flush_rewrite_rules();
 	}
 
@@ -257,6 +253,12 @@ class Firefox_OS_Bookmark {
 			$ffos_bookmark[ 'ff' ] = true;
 		}
 		$ffos_bookmark[ 'host' ] = get_bloginfo( 'url' );
+		if ( isset( $check[ 'alert' ][ 'modal_content' ] ) ) {
+			$ffos_bookmark[ 'content' ] = $check[ 'alert' ][ 'modal_content' ];
+		} else {
+			$ffos_bookmark[ 'content' ] = __( 'Do you want to install this site as an application on your system with Firefox/Firefox for Android/Firefox OS?', $this->plugin_slug );
+		}
+		$ffos_bookmark[ 'close' ] = __( 'Close' );
 		wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'assets/js/public.js', __FILE__ ), null, self::VERSION );
 		wp_localize_script( $this->plugin_slug . '-plugin-script', 'ffos_bookmark', $ffos_bookmark );
 	}
@@ -268,9 +270,9 @@ class Firefox_OS_Bookmark {
 		global $fakepage_manifest; // used to stop double loading
 		$fakepage_manifest_url = "manifest.webapp"; // URL of the fake page
 		if ( !$fakepage_manifest && (strtolower( $wp->request ) == $fakepage_manifest_url) ) {
-// stop interferring with other $posts arrays on this page (only works if the sidebar is rendered *after* the main page)
+			//Stop interferring with other $posts arrays on this page (only works if the sidebar is rendered *after* the main page)
 			$fakepage_manifest = true;
-// create a fake virtual page
+			//Create a fake virtual page
 			$post = new stdClass;
 			$post->post_author = 1;
 			$post->post_name = $fakepage_manifest_url;
@@ -287,7 +289,7 @@ class Firefox_OS_Bookmark {
 			$post->post_date_gmt = current_time( 'mysql', 1 );
 			$posts = NULL;
 			$posts[] = $post;
-// make wpQuery believe this is a real page too
+			//Make wpQuery believe this is a real page too
 			$wp_query->is_page = true;
 			$wp_query->is_singular = true;
 			$wp_query->is_home = false;
@@ -307,7 +309,7 @@ class Firefox_OS_Bookmark {
 			//Get options
 			$manifest = ( array ) get_option( 'firefox-os-bookmark' );
 
-//Execute the resize
+			//Execute the resize
 			if ( isset( $manifest[ 'icon' ] ) ) {
 				//Local path
 				$clean_url = ABSPATH . str_replace( get_bloginfo( 'url' ), '', $manifest[ 'icon' ] );
@@ -341,7 +343,7 @@ class Firefox_OS_Bookmark {
 			}
 			unset( $manifest[ 'alert' ] );
 			$manifest[ 'installs_allowed_from' ] = "*";
-//Get locales info
+			//Get locales info
 			if ( isset( $manifest[ 'locales' ] ) ) {
 				$locales = $manifest[ 'locales' ];
 				unset( $manifest[ 'locales' ] );
@@ -352,19 +354,19 @@ class Firefox_OS_Bookmark {
 				$manifest[ 'locales' ] = $locales_clean;
 			}
 
-//Replace the "
+			//Replace the "
 			$manifest[ 'developer' ][ 'name' ] = str_replace( '"', "'", $manifest[ 'developer' ][ 'name' ] );
 			$relative_path = parse_url( get_bloginfo( 'url' ) );
 			if ( empty( $relative_path[ 'path' ] ) ) {
 				$relative_path[ 'path' ] = "/";
 			}
 			$manifest[ 'launch_path' ] = $relative_path[ 'path' ];
-//Clean JSON
+			//Clean JSON
 			$manifest_ready = str_replace( '\\', '', json_encode( $manifest ) );
 
-//Set the mime type
+			//Set the mime type
 			header( 'Content-type: application/x-web-app-manifest+json' );
-//Clean and print
+			//Clean and print
 			echo str_replace( '"installs_allowed_from":"*"', '"installs_allowed_from":["*"]', $manifest_ready );
 			//Kill the execution of the template
 			exit();

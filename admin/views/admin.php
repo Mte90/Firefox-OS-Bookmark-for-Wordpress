@@ -20,7 +20,11 @@ if ( ! defined( 'WPINC' ) ) {
 ?>
 
 <div class="wrap">
-
+	<style>
+		textarea {
+			width: 80%;
+		}
+	</style>
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 	<?php
 	if ( !get_option( 'permalink_structure' ) ) {
