@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-//Mini Modal based on http://jsfiddle.net/i_like_robots/W2DA8/ modified for the template
+//Mini Modal based on http://jsfiddle.net/i_like_robots/W2DA8/ modified for the plugin
 (function(name, context, definition) {
   if (typeof define === 'function' && define.amd) {
     define(definition);

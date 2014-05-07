@@ -1,7 +1,7 @@
 === Firefox OS Bookmark ===  
 Contributors: Mte90  
 Donate link: http://mte90.net  
-Tags: mobile, bookmark, firefox os, firefox, open web apps, manifest.webapp  
+Tags: mobile, bookmark, firefox os, firefox, open web app, manifest.webapp, webapp  
 Requires at least: 3.8  
 Tested up to: 3.8  
 Stable tag: 1.0.1  
@@ -28,6 +28,7 @@ Github: [https://github.com/Mte90/Firefox-OS-Bookmark-for-Wordpress](https://git
 * MultiSite support
 * Manifest support for multilanguage
 * Native Popup installation (settings)
+* Modal Window with custom text (Compatible with the major themes tested with Twenty Ten, Twenty Eleven, Twenty Twelve, Twenty Fourteen)
 
 = Upload on Firefox Marketplace =
 
@@ -53,14 +54,17 @@ Github: [https://github.com/Mte90/Firefox-OS-Bookmark-for-Wordpress](https://git
 == Screenshots ==
 
 1. Config page
-2. Firefox Os screen
-3. Firefox Os screen
-4. Firefox Os screen
+2. Firefox OS screen
+3. Firefox OS screen
+4. Firefox OS screen
 5. Firefox for Android screen 
 6. Firefox for Android screen 
 7. Firefox for Android screen 
 
 == Changelog ==
+
+= 1.1.0 =
+* [Enhancement] Added the modal with custom text
 
 = 1.0.1 =
 * Better readme
