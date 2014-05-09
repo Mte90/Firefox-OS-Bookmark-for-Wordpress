@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     this.installButton.onclick = function() {
       var checkIfInstalled = navigator.mozApps.getSelf();
+      self.teardown();
       checkIfInstalled.onsuccess = function() {
         if (!checkIfInstalled.result) {
           var now = new Date;
@@ -130,15 +131,16 @@ document.addEventListener("DOMContentLoaded", function() {
           m_app.onsuccess = function(data) {
             now.setDate(now.getDate() + 365);
             document.cookie = 'appTime=false; expires=' + now.toGMTString();
-            self.teardown();
           };
           m_app.onerror = function() {
             now.setDate(now.getDate() + 30);
             console.log("Install failed\n\n:" + m_app.error.name);
             document.cookie = 'appTime=false; expires=' + now.toGMTString();
-            self.teardown();
           };
         }
+      };
+      checkIfInstalled.onerror = function() {
+        console.log("Check install failed\n\n:" + checkIfInstalled.error.name);
       };
     };
 
