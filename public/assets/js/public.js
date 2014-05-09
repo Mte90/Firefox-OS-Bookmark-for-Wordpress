@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var now = new Date;
       now.setDate(now.getDate() + 30);
       document.cookie = 'appTime=false; expires=' + now.toGMTString();
-      self.close();
+      self.teardown();
     };
 
     this.installButton = document.createElement('button');
@@ -130,12 +130,13 @@ document.addEventListener("DOMContentLoaded", function() {
           m_app.onsuccess = function(data) {
             now.setDate(now.getDate() + 365);
             document.cookie = 'appTime=false; expires=' + now.toGMTString();
-            self.close();
+            self.teardown();
           };
           m_app.onerror = function() {
             now.setDate(now.getDate() + 30);
             console.log("Install failed\n\n:" + m_app.error.name);
             document.cookie = 'appTime=false; expires=' + now.toGMTString();
+            self.teardown();
           };
         }
       };
