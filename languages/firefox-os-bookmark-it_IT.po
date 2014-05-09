@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/plugin-name\n"
-"POT-Creation-Date: 2014-03-03 18:56+0100\n"
-"PO-Revision-Date: 2014-03-03 18:56+0100\n"
+"POT-Creation-Date: 2014-05-09 11:13+0100\n"
+"PO-Revision-Date: 2014-05-09 11:14+0100\n"
 "Last-Translator: FULL NAME <email@example.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
 "Language: en_US\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/class-firefox-os-bookmark-admin.php:122
+#: admin/class-firefox-os-bookmark-admin.php:124
 msgid "Firefox OS Bookmark"
 msgstr ""
 
-#: admin/class-firefox-os-bookmark-admin.php:143
+#: admin/class-firefox-os-bookmark-admin.php:145
 msgid "Settings"
 msgstr "Configurazione"
 
-#: admin/class-firefox-os-bookmark-admin.php:156
+#: admin/class-firefox-os-bookmark-admin.php:158
 msgid "Plugin Settings"
 msgstr "Configurazione Plugin"
 
-#: admin/class-firefox-os-bookmark-admin.php:162
+#: admin/class-firefox-os-bookmark-admin.php:163
 msgid ""
 "Show info box on Firefox OS for ask to install the app (30 days for show "
 "again the box)"
@@ -47,7 +47,7 @@ msgstr ""
 "Mostra una finestra su Firefox for Android per chiedere di installare "
 "l'applicazione (verrà mostrato ogni 30 giorni)"
 
-#: admin/class-firefox-os-bookmark-admin.php:170
+#: admin/class-firefox-os-bookmark-admin.php:169
 msgid ""
 "Show info box on Firefox Desktop for ask to install the app (30 days for "
 "show again the box)"
@@ -55,78 +55,95 @@ msgstr ""
 "Mostra una finestra su Firefox Desktop per chiedere di installare "
 "l'applicazione (verrà mostrato ogni 30 giorni)"
 
-#: admin/class-firefox-os-bookmark-admin.php:174
+#: admin/class-firefox-os-bookmark-admin.php:172
+msgid "Text of the installation window"
+msgstr "Testo della finestra di installazione"
+
+#: admin/class-firefox-os-bookmark-admin.php:176
 msgid "Manifest Settings"
 msgstr "Configurazione Manifest"
 
-#: admin/class-firefox-os-bookmark-admin.php:179
-#: admin/class-firefox-os-bookmark-admin.php:385
-#: admin/class-firefox-os-bookmark-admin.php:390
+#: admin/class-firefox-os-bookmark-admin.php:181
+#: admin/class-firefox-os-bookmark-admin.php:387
+#: admin/class-firefox-os-bookmark-admin.php:392
 msgid "Name"
 msgstr "Nome"
 
-#: admin/class-firefox-os-bookmark-admin.php:182
-#: admin/class-firefox-os-bookmark-admin.php:386
-#: admin/class-firefox-os-bookmark-admin.php:390
+#: admin/class-firefox-os-bookmark-admin.php:184
+#: admin/class-firefox-os-bookmark-admin.php:388
+#: admin/class-firefox-os-bookmark-admin.php:392
 msgid "Description"
 msgstr "Descrizione"
 
-#: admin/class-firefox-os-bookmark-admin.php:185
+#: admin/class-firefox-os-bookmark-admin.php:187
 msgid "Developer Name"
 msgstr "Nome Sviluppatore"
 
-#: admin/class-firefox-os-bookmark-admin.php:188
+#: admin/class-firefox-os-bookmark-admin.php:190
 msgid "Site"
 msgstr "Sito"
 
-#: admin/class-firefox-os-bookmark-admin.php:191
+#: admin/class-firefox-os-bookmark-admin.php:193
 msgid "Default Locale"
 msgstr "Lingua predefinita"
 
-#: admin/class-firefox-os-bookmark-admin.php:194
+#: admin/class-firefox-os-bookmark-admin.php:196
 msgid "Version"
 msgstr "Versione"
 
-#: admin/class-firefox-os-bookmark-admin.php:198
+#: admin/class-firefox-os-bookmark-admin.php:200
 msgid "Icons Settings"
 msgstr "Configurazione Icona"
 
-#: admin/class-firefox-os-bookmark-admin.php:203
+#: admin/class-firefox-os-bookmark-admin.php:205
 msgid "Icon"
 msgstr "Icona"
 
-#: admin/class-firefox-os-bookmark-admin.php:207
+#: admin/class-firefox-os-bookmark-admin.php:209
 msgid "Locales Settings"
 msgstr "Configurazione Lingue"
 
-#: admin/class-firefox-os-bookmark-admin.php:212
+#: admin/class-firefox-os-bookmark-admin.php:214
 msgid "App data for language"
 msgstr "Dati applicazione per lingua"
 
-#: admin/class-firefox-os-bookmark-admin.php:350
+#: admin/class-firefox-os-bookmark-admin.php:352
 msgid "Change if you update this page"
 msgstr "Cambialo se aggiorni la pagina"
 
-#: admin/class-firefox-os-bookmark-admin.php:367
+#: admin/class-firefox-os-bookmark-admin.php:369
 msgid "Upload"
 msgstr "Carica"
 
-#: admin/class-firefox-os-bookmark-admin.php:384
-#: admin/class-firefox-os-bookmark-admin.php:390
+#: admin/class-firefox-os-bookmark-admin.php:386
+#: admin/class-firefox-os-bookmark-admin.php:392
 msgid "Language"
 msgstr "Lingua"
 
-#: admin/class-firefox-os-bookmark-admin.php:390
+#: admin/class-firefox-os-bookmark-admin.php:392
 msgid "Add new language"
 msgstr "Aggiungi una nuova lingua"
 
-#: admin/views/admin.php:21
+#: admin/class-firefox-os-bookmark-admin.php:404
+#: public/class-firefox-os-bookmark.php:259
+msgid ""
+"Do you want to install this site as an application on your system with "
+"Firefox/Firefox for Android/Firefox OS?"
+msgstr ""
+"Vuoi installare questo sito come applicazione sul tuo sistema con Firefox/"
+"Firefox for Android/Firefox OS?"
+
+#: admin/views/admin.php:31
 msgid "The permalink are required for use this plugin."
 msgstr "I permalink abilitati sono richiesti dal plugin."
 
-#: admin/views/admin.php:25
+#: admin/views/admin.php:35
 msgid "Manifest path"
 msgstr "Percorso Manifest"
+
+#: public/class-firefox-os-bookmark.php:261
+msgid "Close"
+msgstr "Chiudi"
 
 #~ msgid ""
 #~ "Add the htaccess rule written in the readme in the multisite section."
