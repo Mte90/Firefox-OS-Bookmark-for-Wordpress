@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function() {
     this.isOpen = false;
   };
 
-  Modal.prototype.open = function(callback) {
+  Modal.prototype.open = function() {
     if (this.isOpen) {
       return;
     }
@@ -164,20 +164,12 @@ document.addEventListener("DOMContentLoaded", function() {
     this.modalWindow.focus();
 
     this.isOpen = true;
-
-    if (callback) {
-      callback.call(this);
-    }
   };
 
-  Modal.prototype.close = function(callback) {
+  Modal.prototype.close = function() {
     this.target.removeChild(this.modalWindow);
     this.target.removeChild(this.overlay);
     this.isOpen = false;
-
-    if (callback) {
-      callback.call(this);
-    }
   };
 
   Modal.prototype.teardown = function() {
