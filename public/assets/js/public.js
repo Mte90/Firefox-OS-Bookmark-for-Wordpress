@@ -20,17 +20,17 @@ document.addEventListener("DOMContentLoaded", function() {
     return;
   }
 
-// Click event handler
+  // Click event handler
   var handleClickEvent = function(evt) {
-// Only external links allowed
-// Add target when no named target given
+  // Only external links allowed
+  // Add target when no named target given
     var target = evt.target.getAttribute('target');
     if (!target || target.substr(0, 1) === '_') {
       evt.target.setAttribute('target', '_blank');
     }
   };
-// Delegate all clicks on document body
-// Selector matches external links, but allows https/http switching
+  // Delegate all clicks on document body
+  // Selector matches external links, but allows https/http switching
   var _link = document.querySelectorAll("a[href^='http']:not([href*='://" + location.host + "']):not([target='_blank'])");
   for (var _i = 0; _i < _link.length; _i++) {
     _link[_i].addEventListener('click', handleClickEvent, false);
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
     this.closeButton.onclick = function() {
       var now = new Date;
       now.setDate(now.getDate() + 30);
-      document.cookie = 'appTime=false; expires=' + now.toGMTString();
+      document.cookie = 'appTime=false; expires=' + now.toGMTString() + '; path=/';
       self.teardown();
     };
 
@@ -130,12 +130,12 @@ document.addEventListener("DOMContentLoaded", function() {
           var m_app = navigator.mozApps.install(ffos_bookmark.host + '/manifest.webapp');
           m_app.onsuccess = function(data) {
             now.setDate(now.getDate() + 365);
-            document.cookie = 'appTime=false; expires=' + now.toGMTString();
+            document.cookie = 'appTime=false; expires=' + now.toGMTString() + '; path=/';
           };
           m_app.onerror = function() {
             now.setDate(now.getDate() + 30);
             console.log("Install failed\n\n:" + m_app.error.name);
-            document.cookie = 'appTime=false; expires=' + now.toGMTString();
+            document.cookie = 'appTime=false; expires=' + now.toGMTString() + '; path=/';
           };
         }
       };
