@@ -1,14 +1,14 @@
-function load_manifest() {
-  //Check with cookie if the alert was showed for not annoying the user
-  if (document.cookie.replace(/(?:(?:^|.*;\s*)appTime\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "false") {
-    new Modal(document.body).open();
-  }
-}
-
 //Based on 
 //https://github.com/digitarald/chromeless-external-links-snippet/
 document.addEventListener("DOMContentLoaded", function() {
-// Only enable for chromeless window
+  function load_manifest() {
+    //Check with cookie if the alert was showed for not annoying the user
+    if (document.cookie.replace(/(?:(?:^|.*;\s*)appTime\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "false") {
+      new Modal(document.body).open();
+    }
+  }
+
+  // Only enable for chromeless window
   if (locationbar.visible) {
     if (parseInt(ffos_bookmark.ffos) === 1 && navigator.userAgent.indexOf("Firefox") > -1 && navigator.userAgent.indexOf("Mobile") > -1) {
       load_manifest();
@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Click event handler
   var handleClickEvent = function(evt) {
-  // Only external links allowed
-  // Add target when no named target given
+    // Only external links allowed
+    // Add target when no named target given
     var target = evt.target.getAttribute('target');
     if (!target || target.substr(0, 1) === '_') {
       evt.target.setAttribute('target', '_blank');
@@ -41,18 +41,15 @@ document.addEventListener("DOMContentLoaded", function() {
 (function(name, context, definition) {
   if (typeof define === 'function' && define.amd) {
     define(definition);
-  }
-  else if (typeof module !== 'undefined' && module.exports) {
+  } else if (typeof module !== 'undefined' && module.exports) {
     module.exports = definition();
-  }
-  else {
+  } else {
     context[name] = definition();
   }
 })('Modal', this, function() {
 
   var Modal = function(element) {
     this.target = element;
-
     if (!this.isOpen) {
       this._init();
     }
