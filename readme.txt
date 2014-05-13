@@ -65,7 +65,7 @@ Github: [https://github.com/Mte90/Firefox-OS-Bookmark-for-Wordpress](https://git
 
 = 1.1.2 =
 * [Enhancement] Little optimization of js modal
-* [Fix] The popup it's opened only once for whole site
+* [Fix] The popup it's opened only once for whole site [Thanks @daw___ for the bug fix]
 
 = 1.1.1 =
 * [Enhancement] Little optimization of js modal
