@@ -10,7 +10,7 @@ function load_manifest() {
 document.addEventListener("DOMContentLoaded", function() {
 // Only enable for chromeless window
   if (locationbar.visible) {
-    if (parseInt(ffos_bookmark.ffos) === 1 && !!"mozApps" in navigator && navigator.userAgent.indexOf("Mobile") > -1) {
+    if (parseInt(ffos_bookmark.ffos) === 1 && navigator.userAgent.indexOf("Firefox") > -1 && navigator.userAgent.indexOf("Mobile") > -1) {
       load_manifest();
     } else if (parseInt(ffos_bookmark.fffa) === 1 && navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf("Android") > -1) {
       load_manifest();
