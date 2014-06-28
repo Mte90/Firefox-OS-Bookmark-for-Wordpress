@@ -30,7 +30,7 @@ class Firefox_OS_Bookmark {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.0.1';
+	const VERSION = '1.1.2';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -342,6 +342,7 @@ class Firefox_OS_Bookmark {
 				}
 			}
 			unset( $manifest[ 'alert' ] );
+			unset( $manifest[ 'modal_content' ] );
 			$manifest[ 'installs_allowed_from' ] = "*";
 			//Get locales info
 			if ( isset( $manifest[ 'locales' ] ) ) {
@@ -366,6 +367,7 @@ class Firefox_OS_Bookmark {
 
 			//Set the mime type
 			header( 'Content-type: application/x-web-app-manifest+json' );
+			header( 'HTTP/1.1 200 OK' );
 			//Clean and print
 			echo str_replace( '"installs_allowed_from":"*"', '"installs_allowed_from":["*"]', $manifest_ready );
 			//Kill the execution of the template
