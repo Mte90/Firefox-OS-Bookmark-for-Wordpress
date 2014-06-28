@@ -13,7 +13,7 @@
  * Plugin Name:       Firefox OS Bookmark
  * Plugin URI:        http://mte90.net
  * Description:       Create the manifest.webapp file used on Firefox environment for install the apps. In this way when an user with Firefox OS/Firefox desktop/Firefox for Android open your site it's asked to install an app that is a simple bookmark, or send the web site as hosted for the marketplace.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Author:            Mte90
  * Author URI:        http://mte90.net
  * Text Domain:       firefox-os-bookmark

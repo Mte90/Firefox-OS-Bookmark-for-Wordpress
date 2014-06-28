@@ -30,7 +30,7 @@ class Firefox_OS_Bookmark {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.1.2';
+	const VERSION = '1.1.3';
 
 	/**
 	 * Unique identifier for your plugin.
