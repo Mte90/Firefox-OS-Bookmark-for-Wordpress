@@ -26,6 +26,8 @@ if ( ! defined( 'WPINC' ) ) {
 		}
 	</style>
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+    <h4>Plugin by <a href="http.//mte90.net">Mte90</a> - <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=danielemte90@alice.it&item_name=Donation Firefox OS Bookmark">Donate with Paypal</a></h4>
+
 	<?php
 	if ( !get_option( 'permalink_structure' ) ) {
 		echo '<div class="error"><p>' . __( 'The permalink are required for use this plugin.', $this->plugin_slug ) . '</p></div>';
