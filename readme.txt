@@ -63,6 +63,9 @@ Github: [https://github.com/Mte90/Firefox-OS-Bookmark-for-Wordpress](https://git
 
 == Changelog ==
 
+= 1.1.4b =
+* Little fix for older PHP version
+
 = 1.1.4 =
 * Donation link
 

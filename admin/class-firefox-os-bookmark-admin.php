@@ -155,9 +155,7 @@ class Firefox_OS_Bookmark_Admin {
 	function ffos_bookmark_settings() {
 
 		add_settings_section(
-				'ffos_bookmark_settings_section', __( 'Plugin Settings', $this->plugin_slug ), function () {
-			
-		}, $this->plugin_slug
+				'ffos_bookmark_settings_section', __( 'Plugin Settings', $this->plugin_slug ), '__return_false', $this->plugin_slug
 		);
 		add_settings_field(
 				$this->plugin_slug . '_alert_ffos', __( 'Show info box on Firefox OS for ask to install the app (30 days for show again the box)', $this->plugin_slug ), array( $this, 'field_alert_ffos' ), $this->plugin_slug, 'ffos_bookmark_settings_section'
@@ -173,9 +171,7 @@ class Firefox_OS_Bookmark_Admin {
 		);
 
 		add_settings_section(
-				'ffos_bookmark_settings_manifest_section', __( 'Manifest Settings', $this->plugin_slug ), function () {
-			
-		}, $this->plugin_slug
+				'ffos_bookmark_settings_manifest_section', __( 'Manifest Settings', $this->plugin_slug ), '__return_false', $this->plugin_slug
 		);
 		add_settings_field(
 				$this->plugin_slug . '_name', __( 'Name', $this->plugin_slug ), array( $this, 'field_name' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
@@ -197,18 +193,14 @@ class Firefox_OS_Bookmark_Admin {
 		);
 
 		add_settings_section(
-				'ffos_bookmark_settings_icons_section', __( 'Icons Settings', $this->plugin_slug ), function () {
-			
-		}, $this->plugin_slug
+				'ffos_bookmark_settings_icons_section', __( 'Icons Settings', $this->plugin_slug ), '__return_false', $this->plugin_slug
 		);
 		add_settings_field(
 				$this->plugin_slug . '_icon', __( 'Icon', $this->plugin_slug ), array( $this, 'field_icon' ), $this->plugin_slug, 'ffos_bookmark_settings_icons_section'
 		);
 
 		add_settings_section(
-				'ffos_bookmark_settings_locales_section', __( 'Locales Settings', $this->plugin_slug ), function () {
-			
-		}, $this->plugin_slug
+				'ffos_bookmark_settings_locales_section', __( 'Locales Settings', $this->plugin_slug ), '__return_false', $this->plugin_slug
 		);
 		add_settings_field(
 				$this->plugin_slug . '_locales', __( 'App data for language', $this->plugin_slug ), array( $this, 'field_locales' ), $this->plugin_slug, 'ffos_bookmark_settings_locales_section'
