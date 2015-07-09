@@ -4,7 +4,7 @@ Donate link: http://mte90.net
 Tags: mobile, bookmark, firefox os, firefox, open web app, manifest.webapp, webapp, firefox for android  
 Requires at least: 3.8  
 Tested up to: 4.0  
-Stable tag: 1.1.5  
+Stable tag: 1.1.6  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -26,6 +26,7 @@ Github: [https://github.com/Mte90/Firefox-OS-Bookmark-for-Wordpress](https://git
 * Basic manifest.webapp (domain.tld/manifest.webapp) file
 * Icons support
 * MultiSite support
+* Navigation bar
 * Manifest support for multilanguage
 * Native Popup installation (settings)
 * Modal Window with custom text (Compatible with the major themes tested with Twenty Ten, Twenty Eleven, Twenty Twelve, Twenty Fourteen)
@@ -62,6 +63,10 @@ Github: [https://github.com/Mte90/Firefox-OS-Bookmark-for-Wordpress](https://git
 7. Firefox for Android screen 
 
 == Changelog ==
+
+= 1.1.6 =
+* Support for Navigation Bar by _mr_moe
+* Updated languages
 
 = 1.1.5 =
 * Little fix for older PHP version

@@ -192,7 +192,7 @@ class Firefox_OS_Bookmark_Admin {
 				$this->plugin_slug . '_version', __( 'Version', $this->plugin_slug ), array( $this, 'field_version' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_field(
-				$this->plugin_slug . '_navigation', __( 'Navigation', $this->plugin_slug ), array( $this, 'field_navigation' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+				$this->plugin_slug . '_navigation', __( 'Navigation Bar', $this->plugin_slug ), array( $this, 'field_navigation' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
 		add_settings_section(
 				'ffos_bookmark_settings_icons_section', __( 'Icons Settings', $this->plugin_slug ), '__return_false', $this->plugin_slug

@@ -1,10 +1,11 @@
 # Copyright (C) 2013 TODO
 # This file is distributed under the same license as the TODO package.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/firefox-os-bookmark\n"
-"POT-Creation-Date: 2014-05-09 11:11+0100\n"
+"POT-Creation-Date: 2015-07-09 18:35+0200\n"
 "PO-Revision-Date: 2014-05-09 11:13+0100\n"
 "Last-Translator: Mte90 <mte90net@gmail.com>\n"
 "Language-Team: Mte90 <mte90net@gmail.com>\n"
@@ -12,10 +13,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.2\n"
 "X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
 "esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
-"X-Poedit-Basepath: ../\n"
+"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -24,115 +25,153 @@ msgid "Firefox OS Bookmark"
 msgstr ""
 
 #: admin/class-firefox-os-bookmark-admin.php:145
+#, fuzzy
 msgid "Settings"
-msgstr ""
+msgstr "Configurazione"
 
 #: admin/class-firefox-os-bookmark-admin.php:158
+#, fuzzy
 msgid "Plugin Settings"
-msgstr ""
+msgstr "Configurazione Plugin"
 
-#: admin/class-firefox-os-bookmark-admin.php:163
+#: admin/class-firefox-os-bookmark-admin.php:161
+#, fuzzy
 msgid ""
 "Show info box on Firefox OS for ask to install the app (30 days for show "
 "again the box)"
 msgstr ""
+"Mostra una finestra su Firefox OS per chiedere di installare l'applicazione "
+"(verrà mostrato ogni 30 giorni)"
 
-#: admin/class-firefox-os-bookmark-admin.php:166
+#: admin/class-firefox-os-bookmark-admin.php:164
+#, fuzzy
 msgid ""
 "Show info box on Firefox for Android for ask to install the app (30 days for "
 "show again the box)"
 msgstr ""
+"Mostra una finestra su Firefox for Android per chiedere di installare "
+"l'applicazione (verrà mostrato ogni 30 giorni)"
 
-#: admin/class-firefox-os-bookmark-admin.php:169
+#: admin/class-firefox-os-bookmark-admin.php:167
+#, fuzzy
 msgid ""
 "Show info box on Firefox Desktop for ask to install the app (30 days for "
 "show again the box)"
 msgstr ""
+"Mostra una finestra su Firefox Desktop per chiedere di installare "
+"l'applicazione (verrà mostrato ogni 30 giorni)"
 
-#: admin/class-firefox-os-bookmark-admin.php:172
+#: admin/class-firefox-os-bookmark-admin.php:170
+#, fuzzy
 msgid "Text of the installation window"
-msgstr ""
+msgstr "Testo della finestra di installazione"
 
-#: admin/class-firefox-os-bookmark-admin.php:176
+#: admin/class-firefox-os-bookmark-admin.php:174
+#, fuzzy
 msgid "Manifest Settings"
-msgstr ""
+msgstr "Configurazione Manifest"
 
-#: admin/class-firefox-os-bookmark-admin.php:181
-#: admin/class-firefox-os-bookmark-admin.php:387
-#: admin/class-firefox-os-bookmark-admin.php:392
+#: admin/class-firefox-os-bookmark-admin.php:177
+#: admin/class-firefox-os-bookmark-admin.php:394
+#: admin/class-firefox-os-bookmark-admin.php:399
+#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
-#: admin/class-firefox-os-bookmark-admin.php:184
-#: admin/class-firefox-os-bookmark-admin.php:388
-#: admin/class-firefox-os-bookmark-admin.php:392
+#: admin/class-firefox-os-bookmark-admin.php:180
+#: admin/class-firefox-os-bookmark-admin.php:395
+#: admin/class-firefox-os-bookmark-admin.php:399
+#, fuzzy
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
-#: admin/class-firefox-os-bookmark-admin.php:187
+#: admin/class-firefox-os-bookmark-admin.php:183
+#, fuzzy
 msgid "Developer Name"
-msgstr ""
+msgstr "Nome Sviluppatore"
 
-#: admin/class-firefox-os-bookmark-admin.php:190
+#: admin/class-firefox-os-bookmark-admin.php:186
+#, fuzzy
 msgid "Site"
-msgstr ""
+msgstr "Sito"
 
-#: admin/class-firefox-os-bookmark-admin.php:193
+#: admin/class-firefox-os-bookmark-admin.php:189
+#, fuzzy
 msgid "Default Locale"
-msgstr ""
+msgstr "Lingua predefinita"
 
-#: admin/class-firefox-os-bookmark-admin.php:196
+#: admin/class-firefox-os-bookmark-admin.php:192
+#, fuzzy
 msgid "Version"
-msgstr ""
+msgstr "Versione"
 
-#: admin/class-firefox-os-bookmark-admin.php:200
+#: admin/class-firefox-os-bookmark-admin.php:195
+#, fuzzy
+msgid "Navigation Bar"
+msgstr "Barra di Navigazione"
+
+#: admin/class-firefox-os-bookmark-admin.php:198
+#, fuzzy
 msgid "Icons Settings"
-msgstr ""
+msgstr "Configurazione Icona"
+
+#: admin/class-firefox-os-bookmark-admin.php:201
+#, fuzzy
+msgid "Icon"
+msgstr "Icona"
 
 #: admin/class-firefox-os-bookmark-admin.php:205
-msgid "Icon"
-msgstr ""
-
-#: admin/class-firefox-os-bookmark-admin.php:209
+#, fuzzy
 msgid "Locales Settings"
-msgstr ""
+msgstr "Configurazione Lingue"
 
-#: admin/class-firefox-os-bookmark-admin.php:214
+#: admin/class-firefox-os-bookmark-admin.php:208
+#, fuzzy
 msgid "App data for language"
-msgstr ""
+msgstr "Dati applicazione per lingua"
 
-#: admin/class-firefox-os-bookmark-admin.php:352
+#: admin/class-firefox-os-bookmark-admin.php:346
+#, fuzzy
 msgid "Change if you update this page"
-msgstr ""
+msgstr "Cambialo se aggiorni la pagina"
 
-#: admin/class-firefox-os-bookmark-admin.php:369
+#: admin/class-firefox-os-bookmark-admin.php:376
+#, fuzzy
 msgid "Upload"
-msgstr ""
+msgstr "Carica"
 
-#: admin/class-firefox-os-bookmark-admin.php:386
-#: admin/class-firefox-os-bookmark-admin.php:392
+#: admin/class-firefox-os-bookmark-admin.php:393
+#: admin/class-firefox-os-bookmark-admin.php:399
+#, fuzzy
 msgid "Language"
-msgstr ""
+msgstr "Lingua"
 
-#: admin/class-firefox-os-bookmark-admin.php:392
+#: admin/class-firefox-os-bookmark-admin.php:399
+#, fuzzy
 msgid "Add new language"
-msgstr ""
+msgstr "Aggiungi una nuova lingua"
 
-#: admin/class-firefox-os-bookmark-admin.php:404
+#: admin/class-firefox-os-bookmark-admin.php:411
 #: public/class-firefox-os-bookmark.php:259
+#, fuzzy
 msgid ""
 "Do you want to install this site as an application on your system with "
 "Firefox/Firefox for Android/Firefox OS?"
 msgstr ""
+"Vuoi installare questo sito come applicazione sul tuo sistema con Firefox/"
+"Firefox for Android/Firefox OS?"
 
-#: admin/views/admin.php:31
+#: admin/views/admin.php:33
+#, fuzzy
 msgid "The permalink are required for use this plugin."
-msgstr ""
+msgstr "I permalink abilitati sono richiesti dal plugin."
 
-#: admin/views/admin.php:35
+#: admin/views/admin.php:37
+#, fuzzy
 msgid "Manifest path"
-msgstr ""
+msgstr "Percorso Manifest"
 
 #: public/class-firefox-os-bookmark.php:261
+#, fuzzy
 msgid "Close"
-msgstr ""
+msgstr "Chiudi"

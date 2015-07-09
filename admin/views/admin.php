@@ -34,7 +34,7 @@ if ( ! defined( 'WPINC' ) ) {
 	}
 	?>
 	<form action="options.php" method="post">
-		<?php _e( 'Manifest path', $this->plugin_slug ) ?>: <?php echo get_bloginfo( 'url' ) ?>/manifest.webapp
+		<?php _e( 'Manifest path', $this->plugin_slug ) ?>: <?php echo get_bloginfo( 'wpurl' ) ?>/manifest.webapp
 		<?php
 		settings_fields( $this->plugin_slug );
 		do_settings_sections( $this->plugin_slug );
