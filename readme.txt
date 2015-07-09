@@ -1,5 +1,5 @@
 === Firefox OS Bookmark ===  
-Contributors: Mte90  
+Contributors: Mte90, _mr_moe  
 Donate link: http://mte90.net  
 Tags: mobile, bookmark, firefox os, firefox, open web app, manifest.webapp, webapp, firefox for android  
 Requires at least: 3.8  
