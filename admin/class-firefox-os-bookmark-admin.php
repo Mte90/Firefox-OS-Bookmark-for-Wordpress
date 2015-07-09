@@ -191,7 +191,9 @@ class Firefox_OS_Bookmark_Admin {
 		add_settings_field(
 				$this->plugin_slug . '_version', __( 'Version', $this->plugin_slug ), array( $this, 'field_version' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
 		);
-
+		add_settings_field(
+				$this->plugin_slug . '_navigation', __( 'Navigation', $this->plugin_slug ), array( $this, 'field_navigation' ), $this->plugin_slug, 'ffos_bookmark_settings_manifest_section'
+		);
 		add_settings_section(
 				'ffos_bookmark_settings_icons_section', __( 'Icons Settings', $this->plugin_slug ), '__return_false', $this->plugin_slug
 		);
@@ -343,7 +345,20 @@ class Firefox_OS_Bookmark_Admin {
 
 		echo '<input type="text" name="' . $this->plugin_slug . '[version]" value="' . esc_attr( $setting[ 'version' ] ) . '" /> ' . __( 'Change if you update this page', $this->plugin_slug );
 	}
+	/**
+	 * Navigation
+	 *
+	 * @since    1.X
+	 */
+	function field_navigation() {
+		$setting = ( array ) get_option( $this->plugin_slug );
 
+		if ( !isset( $setting[ 'chrome' ] ) ) {
+			$setting['chrome'] = true;
+		}
+
+		echo '<input type="checkbox" name="' . $this->plugin_slug . '[chrome]" ' . checked( $setting[ 'chrome' ], 'on', false ) . ' />';
+	}
 	/**
 	 * Icon
 	 *
