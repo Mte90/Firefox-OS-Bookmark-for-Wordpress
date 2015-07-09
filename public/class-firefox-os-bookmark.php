@@ -362,6 +362,15 @@ class Firefox_OS_Bookmark {
 				$relative_path[ 'path' ] = "/";
 			}
 			$manifest[ 'launch_path' ] = $relative_path[ 'path' ];
+
+			//Replace now the chrome entry
+			if (isset( $manifest[ 'chrome'])) {
+				$chrome = $manifest[ 'chrome'];
+				unset($manifest[ 'chrome']);
+				$manifest[ 'chrome' ] = array('navigation' => true);
+			}
+			
+
 			//Clean JSON
 			$manifest_ready = str_replace( '\\', '', json_encode( $manifest ) );
 
