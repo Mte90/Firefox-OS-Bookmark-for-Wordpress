@@ -323,15 +323,15 @@ class Firefox_OS_Bookmark {
 				if ( !is_wp_error( $img ) ) {
 
 					$sizes_array = array(
-						array( 'width' => 16, 'height' => 16, 'crop' => true ),
-						array( 'width' => 32, 'height' => 32, 'crop' => true ),
-						array( 'width' => 48, 'height' => 48, 'crop' => true ),
-						array( 'width' => 60, 'height' => 60, 'crop' => true ),
-						array( 'width' => 64, 'height' => 64, 'crop' => true ),
-						array( 'width' => 90, 'height' => 90, 'crop' => true ),
-						array( 'width' => 120, 'height' => 120, 'crop' => true ),
-						array( 'width' => 128, 'height' => 128, 'crop' => true ),
-						array( 'width' => 256, 'height' => 256, 'crop' => true ),
+					    array( 'width' => 16, 'height' => 16, 'crop' => true ),
+					    array( 'width' => 32, 'height' => 32, 'crop' => true ),
+					    array( 'width' => 48, 'height' => 48, 'crop' => true ),
+					    array( 'width' => 60, 'height' => 60, 'crop' => true ),
+					    array( 'width' => 64, 'height' => 64, 'crop' => true ),
+					    array( 'width' => 90, 'height' => 90, 'crop' => true ),
+					    array( 'width' => 120, 'height' => 120, 'crop' => true ),
+					    array( 'width' => 128, 'height' => 128, 'crop' => true ),
+					    array( 'width' => 256, 'height' => 256, 'crop' => true ),
 					);
 
 					$resize = $img->multi_resize( $sizes_array );
@@ -357,19 +357,14 @@ class Firefox_OS_Bookmark {
 
 			//Replace the "
 			$manifest[ 'developer' ][ 'name' ] = str_replace( '"', "'", $manifest[ 'developer' ][ 'name' ] );
-			$relative_path = parse_url( get_bloginfo( 'url' ) );
-			if ( empty( $relative_path[ 'path' ] ) ) {
-				$relative_path[ 'path' ] = "/";
-			}
-			$manifest[ 'launch_path' ] = $relative_path[ 'path' ];
+			$manifest[ 'launch_path' ] = '/';
 
 			//Replace now the chrome entry
-			if (isset( $manifest[ 'chrome'])) {
-				$chrome = $manifest[ 'chrome'];
-				unset($manifest[ 'chrome']);
-				$manifest[ 'chrome' ] = array('navigation' => true);
+			if ( isset( $manifest[ 'chrome' ] ) ) {
+				unset( $manifest[ 'chrome' ] );
+				$manifest[ 'chrome' ] = array( 'navigation' => true );
 			}
-			
+
 
 			//Clean JSON
 			$manifest_ready = str_replace( '\\', '', json_encode( $manifest ) );
