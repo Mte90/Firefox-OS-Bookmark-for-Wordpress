@@ -1,0 +1,150 @@
+# Copyright (C) 2013 TODO
+# This file is distributed under the same license as the TODO package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Firefox OS Bookmark 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/plugins/firefox-os-bookmark\n"
+"POT-Creation-Date: 2015-07-09 18:35+0200\n"
+"PO-Revision-Date: 2015-09-25 19:31+0100\n"
+"Last-Translator: Michal Stanke <michal.stanke@mikk.cz>\n"
+"Language-Team: Mozilla.cz <info@mozilla.cz>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
+"esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Language: cs_CZ\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/class-firefox-os-bookmark-admin.php:124
+msgid "Firefox OS Bookmark"
+msgstr "Firefox OS Bookmark"
+
+#: admin/class-firefox-os-bookmark-admin.php:145
+msgid "Settings"
+msgstr "Nastavení"
+
+#: admin/class-firefox-os-bookmark-admin.php:158
+msgid "Plugin Settings"
+msgstr "Nastavení pluginu"
+
+#: admin/class-firefox-os-bookmark-admin.php:161
+msgid ""
+"Show info box on Firefox OS for ask to install the app (30 days for show "
+"again the box)"
+msgstr ""
+"Zobrazit pro Firefox OS dotaz na instalaci aplikace (30 dní do opětovného "
+"zobrazení)"
+
+#: admin/class-firefox-os-bookmark-admin.php:164
+msgid ""
+"Show info box on Firefox for Android for ask to install the app (30 days for "
+"show again the box)"
+msgstr ""
+"Zobrazit pro Firefox pro Android dotaz na instalaci aplikace (30 dní do "
+"opětovného zobrazení)"
+
+#: admin/class-firefox-os-bookmark-admin.php:167
+msgid ""
+"Show info box on Firefox Desktop for ask to install the app (30 days for "
+"show again the box)"
+msgstr ""
+"Zobrazit pro Firefox pro desktop dotaz na instalaci aplikace (30 dní do "
+"opětovného zobrazení)"
+
+#: admin/class-firefox-os-bookmark-admin.php:170
+msgid "Text of the installation window"
+msgstr "Text instalačního okna"
+
+#: admin/class-firefox-os-bookmark-admin.php:174
+msgid "Manifest Settings"
+msgstr "Nastavení manifestu"
+
+#: admin/class-firefox-os-bookmark-admin.php:177
+#: admin/class-firefox-os-bookmark-admin.php:394
+#: admin/class-firefox-os-bookmark-admin.php:399
+msgid "Name"
+msgstr "Název"
+
+#: admin/class-firefox-os-bookmark-admin.php:180
+#: admin/class-firefox-os-bookmark-admin.php:395
+#: admin/class-firefox-os-bookmark-admin.php:399
+msgid "Description"
+msgstr "Popis"
+
+#: admin/class-firefox-os-bookmark-admin.php:183
+msgid "Developer Name"
+msgstr "Jméno vývojáře"
+
+#: admin/class-firefox-os-bookmark-admin.php:186
+msgid "Site"
+msgstr "Stránka"
+
+#: admin/class-firefox-os-bookmark-admin.php:189
+msgid "Default Locale"
+msgstr "Výchozí jazyk"
+
+#: admin/class-firefox-os-bookmark-admin.php:192
+msgid "Version"
+msgstr "Verze"
+
+#: admin/class-firefox-os-bookmark-admin.php:195
+msgid "Navigation Bar"
+msgstr "Navigační lišta"
+
+#: admin/class-firefox-os-bookmark-admin.php:198
+msgid "Icons Settings"
+msgstr "Nastavení ikony"
+
+#: admin/class-firefox-os-bookmark-admin.php:201
+msgid "Icon"
+msgstr "Ikona"
+
+#: admin/class-firefox-os-bookmark-admin.php:205
+msgid "Locales Settings"
+msgstr "Nastavení jazyků"
+
+#: admin/class-firefox-os-bookmark-admin.php:208
+msgid "App data for language"
+msgstr "Data aplikace pro jazyk"
+
+#: admin/class-firefox-os-bookmark-admin.php:346
+msgid "Change if you update this page"
+msgstr "Změnit při aktualizaci této stránky"
+
+#: admin/class-firefox-os-bookmark-admin.php:376
+msgid "Upload"
+msgstr "Nahrát"
+
+#: admin/class-firefox-os-bookmark-admin.php:393
+#: admin/class-firefox-os-bookmark-admin.php:399
+msgid "Language"
+msgstr "Jazyk"
+
+#: admin/class-firefox-os-bookmark-admin.php:399
+msgid "Add new language"
+msgstr "Přidat nový jazyk"
+
+#: admin/class-firefox-os-bookmark-admin.php:411
+#: public/class-firefox-os-bookmark.php:259
+msgid ""
+"Do you want to install this site as an application on your system with "
+"Firefox/Firefox for Android/Firefox OS?"
+msgstr ""
+"Chcete nainstalovat tuto stránky pomocí Firefoxu jako aplikaci do vašeho "
+"systému?"
+
+#: admin/views/admin.php:33
+msgid "The permalink are required for use this plugin."
+msgstr "Trvalý odkaz je vyžadovaný pro použití tohoto pluginu."
+
+#: admin/views/admin.php:37
+msgid "Manifest path"
+msgstr "Cesta k manifestu"
+
+#: public/class-firefox-os-bookmark.php:261
+msgid "Close"
+msgstr "Zavřít"
